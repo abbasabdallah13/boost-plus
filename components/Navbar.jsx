@@ -41,7 +41,7 @@ const Navbar = () => {
              <span><GrClose className="absolute right-2 top-2" size={"2rem"} onClick={()=> setNavbarModal(false)}  /></span> 
               <ul>
               {links.map(el => (
-                <li className="capitalize mt-2"><Link href={'/'}>{el}</Link></li>
+                <li key={el}  className="capitalize mt-2"><Link href={'/'}>{el}</Link></li>
               ))}
               </ul>
             </motion.div>
