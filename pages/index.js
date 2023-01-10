@@ -1,5 +1,5 @@
 import React from "react";
-import { Search, ImageSlider, Steps, Offers } from "../components";
+import { Search, ImageSlider, Steps, Offers, Feedbacks } from "../components";
 
 const index = () => {
   return (
@@ -8,6 +8,7 @@ const index = () => {
     <ImageSlider />
     <Steps />
     <Offers />
+    <Feedbacks />
   </div>
   )
 };
