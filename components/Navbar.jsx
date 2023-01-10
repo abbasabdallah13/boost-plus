@@ -22,13 +22,13 @@ const Navbar = () => {
   }
 
   return (
-  <div className="relative flex justify-between p-2 items-center p-2 ">
+  <div className="relative flex justify-between p-2 items-center p-2 shadow-md">
         <div className="flex items-center" onClick={()=> setNavbarModal(true)}>
-            <Image src={logo} alt='logo'className="w-16 h-16" />
-            <Image src={burgerMenu} alt='menu'className="w-8 h-8" />
+            <Image src={burgerMenu} alt='menu' className="w-12 h-12" />
         </div>
+        <Image src={logo} alt='logo'className="w-20 h-30" />
         <div>
-            <Image onClick={cartFunctions}  src={cart} alt='cart' className="w-8 h-8" />
+            <Image onClick={cartFunctions}  src={cart} alt='cart' className="w-12 h-12" />
         </div>
 
         {
@@ -50,8 +50,8 @@ const Navbar = () => {
         {
           cartModal && (
               <motion.div className="absolute top-12 bg-white border-8 border-red-600 p-4 z-50 w-full flex flex-col items-center"
-                initial={{opacity: 0,y:-520}}
-                animate={{opacity: 1,y:5}}
+                initial={{opacity: 0,y:-120}}
+                animate={{opacity: 1,y:25}}
                 transition={{delay:0.1, type:'spring'  }}
               >
                 <GrClose className="absolute right-4" onClick={()=>setCartModal(false)} size='2rem'  />
