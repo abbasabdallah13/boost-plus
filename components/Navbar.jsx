@@ -22,7 +22,7 @@ const Navbar = () => {
   }
 
   return (
-  <div className="relative flex justify-between p-2 items-center p-2 shadow-md">
+  <div className="fixed top-0  w-full flex justify-between p-2 items-center p-2 shadow-md z-50 bg-white">
         <div className="flex items-center" onClick={()=> setNavbarModal(true)}>
             <Image src={burgerMenu} alt='menu' className="w-12 h-12" />
         </div>
@@ -49,7 +49,7 @@ const Navbar = () => {
         }
         {
           cartModal && (
-              <motion.div className="absolute top-12 bg-white border-8 border-red-600 p-4 z-50 w-full flex flex-col items-center"
+              <motion.div className="absolute top-12 left-0 bg-white border-8 border-red-600 p-4 z-50 w-full flex flex-col items-center"
                 initial={{opacity: 0,y:-120}}
                 animate={{opacity: 1,y:25}}
                 transition={{delay:0.1, type:'spring'  }}

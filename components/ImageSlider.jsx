@@ -35,7 +35,7 @@ const ImageSlider = () => {
       arrows={false}
       infinite
       autoPlay
-      autoPlaySpeed={2000}
+      autoPlaySpeed={4000}
       showDots={true}
       className="shadow-lg mt-5">
         <div className="flex items-center p-2 sm:gap-4 sm:p-4">
