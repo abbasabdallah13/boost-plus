@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const Steps = () => {
   return (
-  <div className="flex flex-col items-center mt-10">
+  <div className="flex flex-col items-center mt-5">
     <h1 className="text-2xl">4 Easy Steps:</h1>
     <div className="p-4">
         <div className="flex space-around">
