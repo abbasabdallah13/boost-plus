@@ -107,7 +107,7 @@ const Offers = () => {
                             <h1 className="text-l text-center font-semibold">{el.followers?.amount} Followers</h1>
                            <div className="flex items-center">
                                 <span className="line-through">&nbsp;{el.followers?.oldPrice}kr&nbsp;</span>
-                                <span className="bg-red-500 text-white px-2">{el.followers?.newPrice}kr</span>
+                                <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.followers?.newPrice}kr</span>
                             </div>
                         </div>
 
@@ -115,7 +115,7 @@ const Offers = () => {
                             <h1 className="text-l text-center font-semibold">{el.likes?.amount} Likes</h1>
                            <div className="flex items-center">
                                 <span className="line-through">&nbsp;{el.likes?.oldPrice}kr&nbsp;</span>
-                                <span className="bg-red-500 text-white px-2">{el.likes?.newPrice}kr</span>
+                                <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.likes?.newPrice}kr</span>
                             </div>
                         </div>
 
@@ -123,7 +123,7 @@ const Offers = () => {
                             <h1 className="text-l text-center font-semibold">{el.views?.amount} Views</h1>
                            <div className="flex items-center">
                                 <span className="line-through">&nbsp;{el.views?.oldPrice}kr&nbsp;</span>
-                                <span className="bg-red-500 text-white px-2">{el.views?.newPrice}kr</span>
+                                <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.views?.newPrice}kr</span>
                             </div>
                         </div>
 
@@ -131,7 +131,7 @@ const Offers = () => {
                             <h1 className="text-l text-center font-semibold">{el.comments?.amount} Comments</h1>
                            <div className="flex items-center">
                                 <span className="line-through">&nbsp;{el.comments?.oldPrice}kr&nbsp;</span>
-                                <span className="bg-red-500 text-white px-2">{el.comments?.newPrice}kr</span>
+                                <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.comments?.newPrice}kr</span>
                             </div>
                         </div>                        
                 </div>
@@ -149,7 +149,7 @@ const Offers = () => {
                             <h1 className="text-l text-center font-semibold">{el.followers?.amount} Followers</h1>
                         <div className="flex items-center">
                                 <span className="line-through">&nbsp;{el.followers?.oldPrice}kr&nbsp;</span>
-                                <span className="bg-red-500 text-white px-2">{el.followers?.newPrice}kr</span>
+                                <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.followers?.newPrice}kr</span>
                             </div>
                         </div>
 
@@ -157,7 +157,7 @@ const Offers = () => {
                             <h1 className="text-l text-center font-semibold">{el.likes?.amount} Likes</h1>
                         <div className="flex items-center">
                                 <span className="line-through">&nbsp;{el.likes?.oldPrice}kr&nbsp;</span>
-                                <span className="bg-red-500 text-white px-2">{el.likes?.newPrice}kr</span>
+                                <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.likes?.newPrice}kr</span>
                             </div>
                         </div>
 
@@ -165,7 +165,7 @@ const Offers = () => {
                             <h1 className="text-l text-center font-semibold">{el.comments?.amount} Comments</h1>
                         <div className="flex items-center">
                                 <span className="line-through">&nbsp;{el.comments?.oldPrice}kr&nbsp;</span>
-                                <span className="bg-red-500 text-white px-2">{el.comments?.newPrice}kr</span>
+                                <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.comments?.newPrice}kr</span>
                             </div>
                         </div>                        
                 </div>
