@@ -11,7 +11,8 @@ module.exports = {
         'pink':'#DF4C73'
       },
       screens: {
-        'sm': '388px'
+        'sm': '388px',
+        'md': '600px'
       }
     },
     plugins: [],

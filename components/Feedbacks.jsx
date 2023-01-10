@@ -5,36 +5,40 @@ import stars from '../assets/stars.png';
 import Image from "next/image";
 
 const Feedbacks = () => {
+
+    const users = [
+        {
+            name: 'Martin Govic',
+            gender: 'boy',
+            image: boy,
+            feedback: 'Bra service Fick ännu fler följare än jag betalade för och det gick supersnabbt'
+        },
+        {
+            name: 'Laura Mattis',
+            gender: 'girl',
+            image: girl,
+            feedback: '"Tack så mycket nu är jag känd hehe !!"'
+        }]
   return (
   <div className="flex flex-col justify-center">
-    <div className=" bg-pink px-8 py-4">
-        <h1 className="text-2xl font-semibold text-white">Vad säger våra kunder?</h1>
-        <div className="flex-col items-center gap-4 mt-4">
-            <div className="flex items-center justify-around">
-                <Image className="w-16 h-16" src={boy} alt='boy' />
-                <div className="flex-col">
-                    <h1 className="text-white text-xl">Martin Govic</h1>
-                    <Image src={stars} alt='stars' />
-                </div>
-            </div>
-            <div className="text-center mt-2">
-                <p className="text-sm text-white">"Bra service Fick ännu fler följare än jag betalade för och det gick supersnabbt"</p>
-            </div>
-        </div>
 
-    {/* only the below div should be deleted once data is received from database */}
-        <div className="flex-col items-center gap-4 mt-8">
-            <div className="flex items-center justify-around">
-                <Image className="w-16 h-16" src={girl} alt='girl' />
-                <div className="flex-col">
-                    <h1 className="text-white text-xl">Laura Mattis</h1>
-                    <Image src={stars} alt='stars' />
+    <div className="bg-pink px-8 py-4">
+        
+        <h1 className="text-2xl font-semibold text-white">Vad säger våra kunder?</h1>
+        
+        {
+            users.map(el => (
+                <div className="flex items-center gap-4 mt-4">
+                        <Image className="w-16 h-16 " src={el.image} alt={el.name} />
+                    <div>
+                       <h1 className="text-white text-xl">{el.name}</h1>
+                       <Image src={stars} alt='stars' />
+                        <p className="text-sm text-white">"{el.feedback}</p>
+                    </div>
                 </div>
-            </div>
-            <div className="text-center mt-2">
-                <p className="text-sm text-white">"Tack så mycket nu är jag känd hehe !!"</p>
-            </div>
-        </div>
+            ))
+        }
+
     </div>
     <div className="p-4">
         <h1 className="text-2xl font-semibold">Provide Feedback</h1>

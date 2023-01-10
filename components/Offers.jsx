@@ -98,11 +98,11 @@ const Offers = () => {
             <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row`}>
 
                 <div className="flex-col items-center">
-                    <Image src={el.image} alt={el} className="w-48 h-48 " />
+                    <Image src={el.image} alt={el} className="w-48 h-48 md:w-60 md:h-60" />
                     <p className="text-center font-semibold text-xl">{el.name}</p>
                 </div>
 
-                <div>
+                <div className="flex flex-col items-center">
                         <div className="flex flex-col items-center gap-2">
                             <h1 className="text-l text-center font-semibold">{el.followers?.amount} Followers</h1>
                            <div className="flex items-center">
@@ -134,18 +134,18 @@ const Offers = () => {
                                 <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.comments?.newPrice}kr</span>
                             </div>
                         </div>                        
+                        <button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button>
                 </div>
-                <button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button>
             </div>
         ):(
-                <div className={`flex flex-col items-center sm:mt-14   sm:justify-around sm:flex-row`}>
+                <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row`}>
 
                 <div className="flex-col items-center">
-                    <Image src={el.image} alt={el} className="h-48 w-48" />
+                    <Image src={el.image} alt={el} className="h-48 w-48 md:w-60 md:h-60" />
                     <p className="text-center font-semibold text-xl">{el.name}</p>
                 </div>
 
-                <div className="">
+                <div className="flex flex-col items-center">
                         <div className="flex flex-col items-center gap-2">
                             <h1 className="text-l text-center font-semibold">{el.followers?.amount} Followers</h1>
                         <div className="flex items-center">
@@ -169,8 +169,8 @@ const Offers = () => {
                                 <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.comments?.newPrice}kr</span>
                             </div>
                         </div>                        
-                </div>
                     <button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button>
+                </div>
             </div>
              )     
         )
