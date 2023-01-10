@@ -95,14 +95,14 @@ const Offers = () => {
     {
         offersData.map((el,i) => 
             el.name !== 'Facebook' ? (
-            <div className={`flex flex-col items-center sm:mt-14   sm:justify-around sm:flex-row`}>
+            <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row`}>
 
                 <div className="flex-col items-center">
                     <Image src={el.image} alt={el} className="w-48 h-48 " />
                     <p className="text-center font-semibold text-xl">{el.name}</p>
                 </div>
 
-                <div className="">
+                <div>
                         <div className="flex flex-col items-center gap-2">
                             <h1 className="text-l text-center font-semibold">{el.followers?.amount} Followers</h1>
                            <div className="flex items-center">
@@ -135,6 +135,7 @@ const Offers = () => {
                             </div>
                         </div>                        
                 </div>
+                <button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button>
             </div>
         ):(
                 <div className={`flex flex-col items-center sm:mt-14   sm:justify-around sm:flex-row`}>
@@ -169,6 +170,7 @@ const Offers = () => {
                             </div>
                         </div>                        
                 </div>
+                    <button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button>
             </div>
              )     
         )
