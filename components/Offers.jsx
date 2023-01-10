@@ -90,8 +90,8 @@ const Offers = () => {
 
 
   return (
-  <div className="p-4 flex flex-col ">
-    <h1 className="text-center font-bold text-xl">Choose from the below offers:</h1>
+  <div className="p-4 flex flex-col mt-10">
+    <h1 className="text-center font-bold text-2xl">Choose from the below offers:</h1>
     {
         offersData.map((el,i) => 
             el.name !== 'Facebook' ? (
