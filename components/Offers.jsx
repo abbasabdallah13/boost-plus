@@ -92,10 +92,11 @@ const Offers = () => {
   return (
   <div className="p-4 flex flex-col mt-10">
     <h1 className="text-center font-bold text-2xl">Choose from the below offers:</h1>
+    <div className="md:flex md:justify-around md:items-center">
     {
         offersData.map((el,i) => 
             el.name !== 'Facebook' ? (
-            <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row`}>
+            <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row md:flex-col`}>
 
                 <div className="flex-col items-center">
                     <Image src={el.image} alt={el} className="w-48 h-48 md:w-60 md:h-60" />
@@ -138,7 +139,7 @@ const Offers = () => {
                 </div>
             </div>
         ):(
-                <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row`}>
+                <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row md:flex-col md:mb-14`}>
 
                 <div className="flex-col items-center">
                     <Image src={el.image} alt={el} className="h-48 w-48 md:w-60 md:h-60" />
@@ -175,7 +176,7 @@ const Offers = () => {
              )     
         )
     }
-
+    </div>
   </div>
   )
 };

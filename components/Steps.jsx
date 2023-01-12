@@ -12,8 +12,8 @@ const Steps = () => {
     
     <h1 className="text-2xl">4 Easy Steps:</h1>
 
-    <div className="p-4">
-        <div className="flex space-around">
+    <div className="p-4 lg:flex lg:">
+        <div className="flex space-around mt-8">
           <div className="w-2/3 flex justify-center">
             <Image src={one} alt='1' />
           </div>

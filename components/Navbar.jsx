@@ -14,7 +14,7 @@ const Navbar = () => {
   const [cartModal, setCartModal] = useState(false);
 
   
-  const links = ['instagram', 'facebook', 'tiktok', 'twitter'];
+  const links = ['Instagram', 'Facebook', 'Tiktok', 'Twitter'];
 
   const cartFunctions = () => {
     setCartModal(true);
@@ -23,12 +23,29 @@ const Navbar = () => {
 
   return (
   <div className="fixed top-0  w-full flex justify-between p-2 items-center p-2 shadow-md z-50 bg-white">
-        <div className="flex items-center" onClick={()=> setNavbarModal(true)}>
+        <div className="flex items-center lg:hidden" onClick={()=> setNavbarModal(true)}>
             <Image src={burgerMenu} alt='menu' className="w-12 h-12" />
         </div>
-        <Image src={logo} alt='logo'className="w-20 h-30" />
+        <Link href={'/'}><Image src={logo} alt='logo'className="w-20 h-30" /></Link>
+        <ul className="hidden lg:block lg:ml-40">
+        {
+          links.map(el => (
+            <motion.li
+            
+            whileHover={{
+              textDecoration: 'underline',
+            }}
+
+            className="inline" 
+              transition={{ type:'spring'}}
+            ><Link href={'/'+el} className="ml-12 text-xl">{el}
+            </Link>
+            </motion.li>
+          ))
+        }
+        </ul>
         <div>
-            <Image onClick={cartFunctions}  src={cart} alt='cart' className="w-12 h-12" />
+            <Image onClick={cartFunctions}  src={cart} alt='cart' className="w-12 h-12 hover:cursor-pointer" />
         </div>
 
         {
@@ -41,7 +58,12 @@ const Navbar = () => {
              <span><GrClose className="absolute right-2 top-2" size={"2rem"} onClick={()=> setNavbarModal(false)}  /></span> 
               <ul>
               {links.map(el => (
-                <li key={el}  className="capitalize mt-2"><Link href={'/'}>{el}</Link></li>
+                <li 
+                  key={el}  
+                  className="capitalize mt-2"
+                  >
+                    <Link href={'/'}>{el}</Link>
+                </li>
               ))}
               </ul>
             </motion.div>
@@ -49,7 +71,7 @@ const Navbar = () => {
         }
         {
           cartModal && (
-              <motion.div className="absolute top-12 left-0 bg-white border-8 border-red-600 p-4 z-50 w-full flex flex-col items-center"
+              <motion.div className="absolute top-12 left-0 bg-white border-8 border-red-600 p-4 z-50 w-full flex flex-col items-center lg:w-1/4 lg:right-0 lg:!top-[-25px] lg:left-[unset] lg:h-screen"
                 initial={{opacity: 0,y:-120}}
                 animate={{opacity: 1,y:25}}
                 transition={{delay:0.1, type:'spring'  }}

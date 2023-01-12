@@ -40,7 +40,7 @@ const Feedbacks = () => {
         }
 
     </div>
-    <div className="p-4">
+    <div className="p-4 bg-pink text-white">
         <h1 className="text-2xl font-semibold">Provide Feedback</h1>
         <p className="ml-2 mb-4 mt-2">send feedback in case you tried our service and we will post it here with your name once approved</p>
         <label htmlFor="gender">Gender</label>
@@ -52,8 +52,8 @@ const Feedbacks = () => {
             <label htmlFor="female">Female</label>
         </div>
         <h1 className="text-xl font-semibold mt-4">Feedback:</h1>
-        <textarea className="border-black border-2 w-full"></textarea>
-        <button className="border-2 border-black px-2">Submit</button>
+        <textarea className="border-black border-2 w-full text-black p-2"></textarea>
+        <button className="border-2 border-black px-2 bg-white text-pink">Submit</button>
     </div>
   </div>
   )
