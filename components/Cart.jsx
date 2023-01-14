@@ -47,7 +47,7 @@ useEffect(() => {
 
 
   return (
-    <motion.div className="absolute top-12 right-0 bg-white border-4 border-black p-4 z-50 w-full flex md:w-1/2 flex-col lg:w-1/4 lg:right-0 lg:!top-[-25px] lg:left-[unset] lg:h-screen"
+    <motion.div className="absolute top-[-1.55rem] right-0 bg-white border-4 border-black p-4 z-50 w-full flex md:w-1/2 flex-col lg:w-1/4 lg:right-0 lg:!top-[-25px] lg:left-[unset] h-screen"
     initial={{opacity: 0,y:-120}}
     animate={{opacity: 1,y:25}}
     transition={{delay:0.1, type:'spring'  }}
