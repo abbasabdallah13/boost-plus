@@ -46,7 +46,7 @@ const Facebook = () => {
     }
 
     const addToCartBtn = (url,select, voucherCode, voucherName, setSelect, setSelectMsg, setUrl ) => {
-        if(/^https:\/\//.test(url) && /select/ig.test(select) === false ){
+        if(/^https:\/\//i.test(url) && /select/ig.test(select) === false ){
             addToCart(url, select,voucherCode, voucherName);
             setSelect(setSelectMsg)
             setUrl('');

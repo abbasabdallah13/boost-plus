@@ -65,10 +65,10 @@ const Navbar = () => {
               {links.map(el => (
                 <li 
                   key={el}  
-                  className="capitalize mt-2"
+                  className="capitalize mt-4 text-3xl focus:text-decoration:underline"
                   onClick={()=>setNavbarModal(false)}
                   >
-                    <Link href={el}>{el}</Link>
+                    <Link href={el === 'Home' ? '/' : '/' + el}>{el}</Link>
                 </li>
               ))}
               </ul>

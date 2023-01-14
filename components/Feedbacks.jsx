@@ -42,6 +42,7 @@ const Feedbacks = () => {
     </div>
     <div className="p-4 bg-pink text-white">
         <h1 className="text-2xl font-semibold">Provide Feedback</h1>
+        <Image src={stars} className='h-10 w-36' alt='stars' />
         <p className="ml-2 mb-4 mt-2">send feedback in case you tried our service and we will post it here with your name once approved</p>
         <label htmlFor="gender">Gender</label>
         <div>

@@ -57,7 +57,7 @@ useEffect(() => {
     </div>
     {
        cartItems.length === 0 ? (
-        <div className="flex flex-col items-center justify-around h-screen">
+        <div className="flex flex-col items-center justify-around h-full">
           <Image src={cartImg} alt='cart' />
           <h1 className="text-xl text-center">Your Shopping Cart Is Empty</h1>
           <motion.button 
@@ -84,7 +84,7 @@ useEffect(() => {
             </div>
             ))
           }
-          <div className="flex justify-center p-4 items-center border-2 border-black mt-4 checkout-btn fixed bottom-0 bg-black text-white  w-full left-0">
+          <div className="flex justify-center p-4 items-center border-2 border-black mt-4 checkout-btn fixed lg:bottom-0 bg-black text-white  w-full left-0">
             <Link href='/Checkout'>Checkout</Link>
           </div>
         </div>
