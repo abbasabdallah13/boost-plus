@@ -9,3 +9,24 @@
   font-family: irish grover, cursive;
 }
 
+.urlTooltip{
+  position: relative;
+}
+
+.urlTooltip:hover::after{
+  position: absolute;
+  content: 'The url that displays..';
+  width: 190px;
+  left: 10px;
+  top: -30px;
+  background-color: #F3EF89;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+
+.checkout-btn:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+
+}

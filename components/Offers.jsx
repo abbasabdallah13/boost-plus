@@ -2,7 +2,7 @@ import React from "react";
 import instaImg from '../assets/insta.png';
 import facebookImg from '../assets/fb.png';
 import tiktokImg from '../assets/tiktok.png';
-import twitterImg from '../assets/twitter.png'
+import Link from 'next/link';
 import Image from 'next/image'
 
 const Offers = () => {
@@ -135,7 +135,7 @@ const Offers = () => {
                                 <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.comments?.newPrice}kr</span>
                             </div>
                         </div>                        
-                        <button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button>
+                        <Link href={'/'+ el.name}><button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button></Link>
                 </div>
             </div>
         ):(
@@ -170,7 +170,7 @@ const Offers = () => {
                                 <span className="bg-red-500 text-white px-2 ml-2 rounded-md">{el.comments?.newPrice}kr</span>
                             </div>
                         </div>                        
-                    <button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button>
+                    <Link href='/Facebook'><button className="py-2 px-4 text-white mt-4 bg-red-500 rounded-lg">Buy Now</button></Link>
                 </div>
             </div>
              )     

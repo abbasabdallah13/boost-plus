@@ -9,7 +9,9 @@ module.exports = {
     extend: {
       colors: {
         'blue':'#132AD6',
-        'pink':'#DF4C73'
+        'pink':'#DF4C73',
+        'green': '#9DC58F',
+        'beige': '#F3EF89'
       },
       screens: {
         'sm': '388px',
