@@ -84,7 +84,7 @@ useEffect(() => {
             </div>
             ))
           }
-          <div className="flex justify-center items-center border-2 border-black mt-4 checkout-btn fixed bottom-0 bg-black text-white  w-full left-0">
+          <div className="flex justify-center p-4 items-center border-2 border-black mt-4 checkout-btn fixed bottom-0 bg-black text-white  w-full left-0">
             <Link href='/Checkout'>Checkout</Link>
           </div>
         </div>
