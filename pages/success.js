@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useStateContext } from "../context/StateContext";
 import { runFireworks } from "../lib/utils";
+import { client } from "../lib/client";
 
 const success = () => {
     const { setCartItems, setTotalPrice } = useStateContext();
@@ -19,6 +20,17 @@ const success = () => {
         } ]
 
     useEffect(() => {
+        const handleCheckoutBtn = () => {
+            let newArr = JSON.parse(localStorage.getItem('cart')).map(el => {
+              return {
+                _type: 'links',
+                link: el.url,
+                voucher: el.voucherName
+              }
+            });
+            newArr.map(el => client.create(el))
+          }
+      handleCheckoutBtn();
       setCartItems([])
       setTotalPrice(0)
       runFireworks();

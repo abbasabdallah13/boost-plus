@@ -80,19 +80,6 @@ const Checkout = () => {
     stripe.redirectToCheckout({sessionId: data.id});
   }
 
-    const handleCheckoutBtn = () => {
-        let newArr = JSON.parse(localStorage.getItem('cart')).map(el => {
-          return {
-            _type: 'links',
-            link: el.url,
-            voucher: el.voucherName
-          }
-        });
-        newArr.map(el => client.create(el))
-        localStorage.clear();
-        window.location.reload();
-      }
-
       const handlePaymentMethod = (e) => {
         setPaymentMethod(e.target.value);
       }
