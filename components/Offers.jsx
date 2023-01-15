@@ -96,7 +96,7 @@ const Offers = () => {
     {
         offersData.map((el,i) => 
             el.name !== 'Facebook' ? (
-            <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row md:flex-col`}>
+            <div key={i}  className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row md:flex-col`}>
 
                 <div className="flex-col items-center">
                     <Image src={el.image} alt={el} className="w-48 h-48 md:w-60 md:h-60" />
@@ -139,7 +139,7 @@ const Offers = () => {
                 </div>
             </div>
         ):(
-                <div className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row md:flex-col md:mb-14`}>
+                <div key={i}  className={`flex flex-col items-center sm:mt-14 sm:justify-around sm:flex-row md:flex-col md:mb-14`}>
 
                 <div className="flex-col items-center">
                     <Image src={el.image} alt={el} className="h-48 w-48 md:w-60 md:h-60" />

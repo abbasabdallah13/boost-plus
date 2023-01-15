@@ -34,19 +34,15 @@ import {BsFillTrashFill} from 'react-icons/bs'
 
 import Link from 'next/link';
 
-import { client } from '../lib/client';
-import { twitterLikes } from "../lib/data";
-
 
 const Cart = ({setCartModal}) => {
     const { cartItems, deleteItem, totalPrice } = useStateContext();
 
-useEffect(() => {
-  console.log(JSON.parse(localStorage.getItem('cart')));
-  console.log(JSON.parse(localStorage.getItem('total')));
-
-  
-}, [cartItems]);
+    useEffect(() => {
+      console.log(JSON.parse(localStorage.getItem('cart')));
+      console.log(JSON.parse(localStorage.getItem('total')));
+      
+    }, [cartItems]);
 
 
   return (

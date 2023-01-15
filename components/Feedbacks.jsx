@@ -27,8 +27,8 @@ const Feedbacks = () => {
         <h1 className="text-2xl font-semibold text-white">Vad säger våra kunder?</h1>
         
         {
-            users.map(el => (
-                <div className="flex items-center gap-4 mt-4">
+            users.map((el,i) => (
+                <div key={i}  className="flex items-center gap-4 mt-4">
                         <Image className="w-16 h-16 " src={el.image} alt={el.name} />
                     <div>
                        <h1 className="text-white text-xl">{el.name}</h1>

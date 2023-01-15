@@ -13,9 +13,8 @@ export default async function handler(req, res) {
                     price_data: {
                         currency: 'sek',
                         product_data: {
-                            name: el.voucherName,
-                            description: el.fromSelect.split(',')[0],
-                            url: el.url
+                            name: el.fromSelect.split(',')[0]+' '+ el.voucherName,
+                            description: el.url,
                         },
                         unit_amount: Number(el.fromSelect.split(',')[1])*100,
                         },
@@ -27,7 +26,7 @@ export default async function handler(req, res) {
             }),
             mode: 'payment',
             success_url: `${req.headers.origin}/success`,
-            cancel_url: `${req.headers.origin}/canceled`,
+            cancel_url: `${req.headers.origin}/`,
           }
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);

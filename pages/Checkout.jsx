@@ -116,7 +116,7 @@ const Checkout = () => {
       </div>
       <div className="flex justify-between mt-4">
         <p className="text-2xl">Total</p>
-        <p>{localStorage.getItem('total')} SEK</p>
+        <p className="text-2xl">{localStorage.getItem('total')} SEK</p>
       </div>
     </div>
     {/* payment method section */}

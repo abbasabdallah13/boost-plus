@@ -17,8 +17,8 @@ const Footer = () => {
         <div className="hidden lg:block">
           <ul>
           {
-            links.map(el => (
-              <Link href={el}><li className="inline ml-4">{el}</li></Link>
+            links.map((el,i) => (
+              <Link key={i}  href={el}><li className="inline ml-4">{el}</li></Link>
             ))
           }
           </ul>
