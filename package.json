@@ -12,13 +12,16 @@
     "@fontsource/irish-grover": "^4.5.7",
     "@next/font": "13.1.1",
     "@sanity/client": "^4.0.1",
+    "@stripe/stripe-js": "^1.46.0",
+    "canvas-confetti": "^1.6.0",
     "framer-motion": "^8.3.3",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
-    "react-multi-carousel": "^2.8.2"
+    "react-multi-carousel": "^2.8.2",
+    "stripe": "^11.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

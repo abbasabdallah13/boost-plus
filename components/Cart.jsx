@@ -39,11 +39,14 @@ import { twitterLikes } from "../lib/data";
 
 
 const Cart = ({setCartModal}) => {
-    const { cartItems, deleteItem } = useStateContext();
+    const { cartItems, deleteItem, totalPrice } = useStateContext();
 
 useEffect(() => {
   console.log(JSON.parse(localStorage.getItem('cart')));
-}, []);
+  console.log(JSON.parse(localStorage.getItem('total')));
+
+  
+}, [cartItems]);
 
 
   return (
@@ -84,9 +87,8 @@ useEffect(() => {
             </div>
             ))
           }
-          <div className="flex justify-center p-4 items-center border-2 border-black mt-4 checkout-btn fixed lg:bottom-0 bg-black text-white  w-full left-0">
-            <Link href='/Checkout'>Checkout</Link>
-          </div>
+            <p>Total: {totalPrice} SEK</p>
+            <Link className="p-4 text-center border-2 border-black mt-4 checkout-btn fixed lg:bottom-0 bg-black text-white  w-full left-0"  href='/Checkout' onClick={() => setCartModal(false)}>Checkout</Link>
         </div>
       )
     }

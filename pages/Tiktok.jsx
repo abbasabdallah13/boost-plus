@@ -120,7 +120,7 @@ const Tiktok = () => {
             <div className="flex flex-col items-center justify-around mr-4">
                 <Image src={tiktokViewsImg} alt='views' className="w-28 h-28 md:w-32 md:h-32 md2:w-36 md2:h-36"  />
                 <h1 className="text-xl">Views:</h1>
-                <select className="border-2 border-black bg-slate-200 rounded-md cursor-pointer" value={selectComments} onChange={handleSelectComments}>
+                <select className="border-2 border-black bg-slate-200 rounded-md cursor-pointer" value={selectViews} onChange={handleSelectViews}>
                     <option>Select Views:</option>
                     {tiktokViews.map(el => (
                         <option key={el.value} value={[el.value,el.price]}>{`${el.value} - ${el.price}SEK`}</option>
@@ -137,7 +137,7 @@ const Tiktok = () => {
             <div className="flex flex-col items-center justify-around">
                 <Image src={tiktokSharesImg} alt='views' className="h-28 w-28 md:w-32 md:h-32 md2:w-36 md2:h-36"  />
                 <h1 className="text-xl">Shares:</h1>
-                <select className="border-2 border-black bg-slate-200 rounded-md cursor-pointer" value={selectViews} onChange={handleSelectViews}>
+                <select className="border-2 border-black bg-slate-200 rounded-md cursor-pointer" value={selectShares} onChange={handleSelectShares}>
                     <option>Select shares</option>
                     {tiktokShares.map(el => (
                         <option key={el.value} value={[el.value,el.price]}>{`${el.value} - ${el.price}SEK`}</option>

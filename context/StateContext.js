@@ -6,6 +6,7 @@ const Context = createContext();
 
 export const StateContext = ({ children }) => {
     const [cartItems, setCartItems] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('cart')) || []);
+    const [totalPrice, setTotalPrice] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('total')) || 0);
     
     const addToCart = (url,fromSelect,voucherCode,voucherName) => {
         if(!url || !fromSelect.length){
@@ -20,7 +21,7 @@ export const StateContext = ({ children }) => {
                 voucherName:voucherName,
             }
             ]);
-       
+            setTotalPrice((prev) => (prev)+Number(fromSelect.split(',')[1]));       
             toast.success(`${fromSelect.split(',')[0]} ${voucherName} added to cart!`)
         }else{
             setCartItems((prev)=>[...prev,{
@@ -30,30 +31,31 @@ export const StateContext = ({ children }) => {
                 voucherName:voucherName,
             }
             ]);
-            
-        toast.success(`${fromSelect.split(',')[0]} ${voucherName} added to cart!`)
+            setTotalPrice((prev) => Number(prev)+Number(fromSelect.split(',')[1]));            
+            toast.success(`${fromSelect.split(',')[0]} ${voucherName} added to cart!`)
         }
 
     }
+    
+     const deleteItem = (voucherName,url,fromSelect) => { //only one at once can be bought so is being filtered by voucher value
+        let item = cartItems.find(el => el.voucherName === voucherName && el.url === url);
+        setCartItems((cartItems) => cartItems.filter(el => el !== item));
+        setTotalPrice((prev) => Number(prev) - Number(fromSelect.split(',')[1]))
+        }
 
     useEffect(() => {
         localStorage.setItem('cart',JSON.stringify(cartItems));
-
-    }, [cartItems]);
-    
-    
+        localStorage.setItem('total',JSON.stringify(totalPrice));
+    }, [cartItems, totalPrice]);    
         
-
-    const deleteItem = (voucherName,url,fromSelect) => { //only one at once can be bought so is being filtered by voucher value
-        let item = cartItems.find(el => el.voucherName === voucherName && el.url === url);
-        setCartItems((cartItems) => cartItems.filter(el => el !== item));
-        }
 
     return (
         <Context.Provider 
         value={{
             setCartItems,
             cartItems,
+            totalPrice,
+            setTotalPrice,
             addToCart,
             deleteItem
         }}>
