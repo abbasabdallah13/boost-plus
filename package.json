@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/irish-grover": "^4.5.7",
     "@next/font": "13.1.1",
+    "@paypal/react-paypal-js": "^7.8.2",
     "@sanity/client": "^4.0.1",
     "@stripe/stripe-js": "^1.46.0",
     "canvas-confetti": "^1.6.0",

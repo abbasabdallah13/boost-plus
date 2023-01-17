@@ -83,8 +83,10 @@ const Cart = ({setCartModal}) => {
             </div>
             ))
           }
-            <p>Total: {totalPrice} SEK</p>
-            <Link className="p-4 text-center border-2 border-black mt-4 checkout-btn fixed lg:bottom-0 bg-black text-white  w-full left-0"  href='/Checkout' onClick={() => setCartModal(false)}>Checkout</Link>
+            <div className="fixed lg:bottom-0 w-full flex flex-col left-0">
+              <p className="p-2 text-right bg-white">Total: {totalPrice} SEK</p>
+              <Link className="p-4 text-center border-2 border-black checkout-btn bg-black text-white w-full"  href='/Checkout' onClick={() => setCartModal(false)}>Checkout</Link>
+            </div>
         </div>
       )
     }

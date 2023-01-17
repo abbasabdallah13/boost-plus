@@ -1,4 +1,6 @@
 import React, { useEffect,useState } from "react";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
 import { client } from "../lib/client";
 import { useStateContext } from "../context/StateContext";
 import Image from "next/image";
@@ -91,7 +93,7 @@ const Checkout = () => {
       <h1 className="text-center text-4xl">Your Order</h1>
       <div className="overflow-y-scroll max-h-96">
         {cartItems.map(el => (
-          <div className="flex items-center border-2 rounded-lg p-2 mt-4 overflow-x-scroll">
+          <div className="flex items-center border-2 rounded-lg p-2 mt-4 overflow-x-scroll hidden-scrollbar">
             <Image className="h-16 w-16 " src={el.voucherCode === 'instaLikes' ? instaLikesImg : el.voucherCode === 'instaFollowers' ? followersImg : el.voucherCode === 'instaComments' ? commentsImg : el.voucherCode === 'instaViews' ? viewsImg : el.voucherCode === 'fbLikes' ? fbLikesImg : el.voucherCode === 'fbComments' ? fbCommentsImg : el.voucherCode === 'fbPageLikes' ? fbPageLikesImg : el.voucherCode === 'youtubeLikes' ? youtubeLikesImg : el.voucherCode === 'youtubeComments' ? youtubeCommentsImg : el.voucherCode === 'youtubeViews' ? youtubeViewsImg : el.voucherCode === 'youtubeSubscribers' ? youtubeSubscribersImg : el.voucherCode === 'tiktokComments' ? tiktokCommentsImg : el.voucherCode === 'tiktokLikes' ? tiktokLikesImg : el.voucherCode === 'tiktokShares' ? tiktokSharesImg : el.voucherCode === 'tiktokViews' ? tiktokViewsImg : el.voucherCode === 'twitterLikes' ? twitterLikesImg : el.voucherCode === 'twitterFollowers' ? twitterFollowersImg : ''}  alt='voucher' />
             <div className="p-2 flex flex-col">
               <p className="font-semibold text-xl">{el.voucherName}</p>
@@ -126,8 +128,39 @@ const Checkout = () => {
                     <button className="border-2 px-2 mt-2" onClick={handleCreditDebitPayments}>Pay with Stripe</button>
                   </div>
                 ):paymentMethod === 'paypal' && el.value === 'paypal' ? (
-                  <div>
-                    PayPal
+                  <div className="flex flex-col items-left">
+                    <PayPalScriptProvider 
+                        options={
+                          {
+                            'client-id': 'AV7wUYM7TOWXHbyfvc6Bty4QhBQjEmIx34ZRZ2R6dAzp-_BiLlgBsBl1hiBM2kTqWS9OJWoGh553bGys',
+                             currency:'SEK'
+                          }}>
+                      <PayPalButtons 
+                      className="w-40 mt-4 ml-4"
+                      createOrder={(data, actions) => {
+                        return actions.order
+                            .create({
+                                purchase_units: [
+                                    {
+                                        amount: {
+                                          value: `${totalPrice}`,
+                                          currency_code: 'SEK'
+                                        },
+                                    },
+                                ],
+                            })
+                            .then((orderId) => {
+                                // Your code here after create the order
+                                return orderId;
+                            });
+                    }}
+                    onApprove={function (data, actions) {
+                        return actions.order.capture().then(function () {
+                            // Your code here after capture the order
+                        });
+                    }}
+                      />
+                    </PayPalScriptProvider>
                   </div>
                 ):paymentMethod === 'swish' && el.value === 'swish' ? (
                   <div>

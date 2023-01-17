@@ -25,7 +25,7 @@ const Navbar = () => {
   }
 
   return (
-  <div className="fixed top-0  w-full flex justify-between p-2 items-center p-2 shadow-md z-50 bg-white">
+  <div className="fixed top-0  w-full flex justify-between p-2 items-center p-2 shadow-md bg-white" style={{zIndex: '999'}}>
         <div className="flex items-center lg:hidden" onClick={()=> setNavbarModal(true)}>
             <Image src={burgerMenu} alt='menu' className="w-12 h-12" />
         </div>
