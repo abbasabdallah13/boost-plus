@@ -12,7 +12,7 @@ module.exports = {
         'blue2':'#244994',
         'pink':'#DF4C73',
         'green': '#9DC58F',
-        'beige': '#F3EF89'
+        'beige': '#F3EF89',
       },
       screens: {
         'sm': '388px',

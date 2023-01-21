@@ -23,7 +23,7 @@ const Footer = () => {
           }
           </ul>
         </div>
-        <Image src={whiteLogo} className="w-20 h-30"  alt='white logo' />
+        <Image src={whiteLogo} className="w-10 h-15 mr-2 mt-12"  alt='white logo' />
       </div>
       <div className="bg-gray-300 text-black text-center px-4">
         <p>All rights reserved - 2023</p>

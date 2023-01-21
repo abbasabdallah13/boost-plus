@@ -5,7 +5,7 @@ import { runFireworks } from "../lib/utils";
 import { client } from "../lib/client";
 
 const success = () => {
-    const { setCartItems, setTotalPrice } = useStateContext();
+    const { setCartItems, setTotalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
     const contactMethods = [
         {
             title:'chat',
@@ -20,20 +20,26 @@ const success = () => {
         } ]
 
     useEffect(() => {
+        console.log('rendered');
         const handleCheckoutBtn = () => {
             let newArr = JSON.parse(localStorage.getItem('cart')).map(el => {
               return {
                 _type: 'links',
+                fullname: fullName,
                 link: el.url,
-                voucher: el.voucherName
+                voucher: el.voucherName,
+                paymentMethod: paymentMethod,
+                status: 'pending'
               }
             });
             newArr.map(el => client.create(el))
           }
       handleCheckoutBtn();
-      setCartItems([])
-      setTotalPrice(0)
+      setCartItems([]);
+      setTotalPrice(0);
+      setPaymentMethod('');
       runFireworks();
+      setFullName('');
     }, []);
   return (
   <div className="h-screen">

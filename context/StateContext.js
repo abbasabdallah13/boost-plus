@@ -7,7 +7,11 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
     const [cartItems, setCartItems] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('cart')) || []);
     const [totalPrice, setTotalPrice] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('total')) || 0);
+    const [fullName, setFullName] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('fullname')) || '');
+    const [paymentMethod, setPaymentMethod] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('paymentMethod')) || '');
+
     
+
     const addToCart = (url,fromSelect,voucherCode,voucherName) => {
         if(!url || !fromSelect.length){
             toast.error("You should select an offer and enter a valid url");
@@ -46,7 +50,9 @@ export const StateContext = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('cart',JSON.stringify(cartItems));
         localStorage.setItem('total',JSON.stringify(totalPrice));
-    }, [cartItems, totalPrice]);    
+        localStorage.setItem('fullname', JSON.stringify(fullName))
+        localStorage.setItem('paymentMethod', JSON.stringify(paymentMethod))
+    }, [cartItems, totalPrice,fullName, paymentMethod]);    
         
 
     return (
@@ -57,7 +63,11 @@ export const StateContext = ({ children }) => {
             totalPrice,
             setTotalPrice,
             addToCart,
-            deleteItem
+            deleteItem,
+            fullName,
+            setFullName,
+            paymentMethod,
+            setPaymentMethod
         }}>
             {children}
         </Context.Provider>

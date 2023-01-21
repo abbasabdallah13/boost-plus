@@ -35,6 +35,7 @@ import cashImg from '../assets/cash.png';
 import getStripe from "../lib/getStripe";
 import { toast } from "react-hot-toast";
 
+
 const Checkout = () => {
   const paymentMethods = [
     {
@@ -58,9 +59,9 @@ const Checkout = () => {
       img: cashImg
     },
   ]
-  const { cartItems, totalPrice } = useStateContext();
+  const { cartItems, totalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
   
-  const [paymentMethod, setPaymentMethod] = useState('');
+  
   
   const handleCreditDebitPayments = async () => {
     const stripe = await getStripe();
@@ -85,6 +86,8 @@ const Checkout = () => {
       const handlePaymentMethod = (e) => {
         setPaymentMethod(e.target.value);
       }
+
+ 
       
   return (
   <div className="mt-28 p-4">
@@ -108,14 +111,19 @@ const Checkout = () => {
         <p className="text-2xl">{totalPrice} SEK</p>
       </div>
     </div>
+  
     {/* payment method section */}
     <div>
-        <h1 className="text-4xl text-center mt-4">Payment Method</h1>
+        <h1 className="text-4xl text-center mt-4">Payment Method and User Details</h1>
+          <div className="mt-4">
+            <label>Full Name</label>
+            <input className="border-2 rounded-md ml-2 px-2 w-full"  type='text' value={fullName} onChange={(e)=>{setFullName(e.target.value); console.log(fullName)}} />
+          </div>
         <div className="flex flex-col">
         {
           paymentMethods.map((el,i) => (
             <>
-            <div className={`border-2 rounded-lg flex p-2 ${i===0?'mt-8':'mt-4'}`}>
+            <div className={`border-2 rounded-lg flex p-2 ${i===0?'mt-4':'mt-2'}`}>
               <input type='radio' name='paymentMethod' value={el.value} onChange={handlePaymentMethod} />
               <label className="flex items-center">
                 <Image src={el.img} className={`w-20 h-6 ml-2 ${el.img === cashImg?'w-8 h-8':''}`}  alt={el.title} />
@@ -125,42 +133,57 @@ const Checkout = () => {
               {
                 paymentMethod === 'creditDebitCard' && el.value === 'creditDebitCard' ?(
                   <div className="p-2">
-                    <button className="border-2 px-2 mt-2" onClick={handleCreditDebitPayments}>Pay with Stripe</button>
+                    {
+                      cartItems.length > 0 ? (
+                        <button className="border-2 px-2 mt-2" onClick={handleCreditDebitPayments}>Pay with Stripe</button>
+                      ): (
+                        'Cart is Empty'
+                      )
+                    }
                   </div>
                 ):paymentMethod === 'paypal' && el.value === 'paypal' ? (
                   <div className="flex flex-col items-left">
-                    <PayPalScriptProvider 
-                        options={
-                          {
-                            'client-id': 'AV7wUYM7TOWXHbyfvc6Bty4QhBQjEmIx34ZRZ2R6dAzp-_BiLlgBsBl1hiBM2kTqWS9OJWoGh553bGys',
-                             currency:'SEK'
-                          }}>
-                      <PayPalButtons 
-                      className="w-40 mt-4 ml-4"
-                      createOrder={(data, actions) => {
-                        return actions.order
-                            .create({
-                                purchase_units: [
-                                    {
-                                        amount: {
-                                          value: `${totalPrice}`,
-                                          currency_code: 'SEK'
+                    {
+                      cartItems.length > 0 ? (
+                        <>
+                        <PayPalScriptProvider 
+                            options={
+                              {
+                                'client-id': 'AV7wUYM7TOWXHbyfvc6Bty4QhBQjEmIx34ZRZ2R6dAzp-_BiLlgBsBl1hiBM2kTqWS9OJWoGh553bGys',
+                                currency:'SEK'
+                              }}>
+                          <PayPalButtons 
+                          className="w-40 mt-4 ml-4"
+                          createOrder={(data, actions) => {
+                            return actions.order
+                                .create({
+                                    purchase_units: [
+                                        {
+                                            amount: {
+                                              value: `${totalPrice}`,
+                                              currency_code: 'SEK'
+                                            },
                                         },
-                                    },
-                                ],
-                            })
-                            .then((orderId) => {
-                                // Your code here after create the order
-                                return orderId;
+                                    ],
+                                })
+                                .then((orderId) => {
+                                    // Your code here after create the order
+                                    return orderId;
+                                });
+                        }}
+                        onApprove={function (data, actions) {
+                            return actions.order.capture().then(function () {
+                                // Your code here after capture the order
+                                console.log('success');
                             });
-                    }}
-                    onApprove={function (data, actions) {
-                        return actions.order.capture().then(function () {
-                            // Your code here after capture the order
-                        });
-                    }}
-                      />
-                    </PayPalScriptProvider>
+                        }}
+                          />
+                        </PayPalScriptProvider>
+                        </>
+                      ):(
+                        'Cart is Empty'
+                      )
+                    }
                   </div>
                 ):paymentMethod === 'swish' && el.value === 'swish' ? (
                   <div>
