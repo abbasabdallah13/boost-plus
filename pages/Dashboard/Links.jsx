@@ -14,7 +14,7 @@ const Links = () => {
     
     useEffect(() => {
       const query = `*[_type == 'links']`;
-      client.fetch(query).then(data => {setLinks(data); console.log(data)})
+      client.fetch(query).then(data => {setLinks(data);})
 
       setTimeout(() => {
         setLoading(false)

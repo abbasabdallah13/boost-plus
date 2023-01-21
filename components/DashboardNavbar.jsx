@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import burgermenu from '../assets/burgermenu.png';
+import logo from '../assets/logo.png';
 import Image from "next/image";
 import Link from "next/link";
 const DashboardNavbar = () => {
@@ -30,8 +31,9 @@ const DashboardNavbar = () => {
             </div>            
         )} */}
          
-                    <div className="p-4">
+                    <div className="p-4 flex justify-between">
                         <Image className="w-10 h-10" src={burgermenu} alt='burger-menu' onClick={() => setSidebar(true)}  />
+                        <Image src={logo} alt='logo' className="h-12 w-12" />
                     </div>
     
            {
