@@ -47,7 +47,7 @@ const Id = () => {
   return (
     
   <div className="z-[999] absolute top-[0rem] h-screen w-screen bg-[#272935] p-2 flex flex-col justify-around">
-    <div className="mt-14">
+    <div className="mt-4">
         <BiArrowBack size='5rem' color='#fff' onClick={() => router.back()}/>
     </div>
     {
