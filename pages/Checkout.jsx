@@ -34,9 +34,10 @@ import cashImg from '../assets/cash.png';
 
 import getStripe from "../lib/getStripe";
 import { toast } from "react-hot-toast";
-
+import { useRouter } from 'next/router';
 
 const Checkout = () => {
+  const router = useRouter();
   const paymentMethods = [
     {
       title: 'Credit/Debit Card',
@@ -168,14 +169,13 @@ const Checkout = () => {
                                 })
                                 .then((orderId) => {
                                     // Your code here after create the order
-                                    return orderId;
                                 });
                         }}
                         onApprove={function (data, actions) {
                             return actions.order.capture().then(function () {
                                 // Your code here after capture the order
-                                console.log('success');
-                            });
+                                router.push('/success')
+                              });
                         }}
                           />
                         </PayPalScriptProvider>
