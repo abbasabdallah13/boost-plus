@@ -54,7 +54,7 @@ const DashboardNavbar = () => {
                             }
                         </div>
                         <div className='flex justify-center text-white'>
-                            <button className='bg-red-500 p-2 rounded-lg' onClick={() => {localStorage.clear(); router.replace('/DashboardLogin')}}>Logout</button>
+                            <button className='bg-red-500 p-2 rounded-lg' onClick={() => {localStorage.clear(); window.location.reload()}}>Logout</button>
                         </div>
                     </div>  
                     </>
