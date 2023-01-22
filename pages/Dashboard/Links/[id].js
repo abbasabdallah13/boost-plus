@@ -47,7 +47,7 @@ const Id = () => {
 
     <div className="mt-4">
       <label className="text-[#86DFE4] text-4xl">Payment Method:</label>
-      <p className="text-white text-2xl ml-4"  >{user.paymentMethod}</p>
+      <p className="text-white text-2xl ml-4"  >{user.paymentMethod === 'creditDebitCard' ? 'Credit/Debit Card' : user.paymentMethod === 'paypal' ? 'PayPal' : user.paymentMethod === 'swish' ? 'Swish' : user.paymentMethod ==='cash' ? 'Cash' : ''}</p>
     </div>
 
     <div className="mt-4">
