@@ -51,6 +51,9 @@ const DashboardNavbar = () => {
                                 ))
                             }
                         </div>
+                        <div className='flex justify-center text-white'>
+                            <button className='bg-red-500 p-2 rounded-lg' onClick={() => localStorage.clear()}>Logout</button>
+                        </div>
                     </div>  
                     </>
                 ) : '' 
