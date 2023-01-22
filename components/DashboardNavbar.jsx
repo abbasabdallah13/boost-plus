@@ -3,7 +3,9 @@ import burgermenu from '../assets/burgermenu.png';
 import logo from '../assets/logo.png';
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const DashboardNavbar = () => {
+    const router = useRouter();
     const [sidebar, setSidebar] = useState(false);
     
 
@@ -52,7 +54,7 @@ const DashboardNavbar = () => {
                             }
                         </div>
                         <div className='flex justify-center text-white'>
-                            <button className='bg-red-500 p-2 rounded-lg' onClick={() => localStorage.clear()}>Logout</button>
+                            <button className='bg-red-500 p-2 rounded-lg' onClick={() => {localStorage.clear(); router.replace('DashboardLogin')}}>Logout</button>
                         </div>
                     </div>  
                     </>
