@@ -27,7 +27,7 @@ const index = () => {
   
   return (
   <div>
-    <Search />
+    {/* <Search /> */}
     <ImageSlider />
     <Steps />
     <Offers />

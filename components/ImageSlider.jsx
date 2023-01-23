@@ -37,7 +37,7 @@ const ImageSlider = () => {
       autoPlay
       autoPlaySpeed={4000}
       showDots={true}
-      className="shadow-lg mt-5">
+      className="shadow-lg mt-28">
         <div className="flex items-center p-2 sm:gap-4 sm:p-4 md:justify-around">
           <Image src={sliderImg1} className="w-40 h-40 sm:w-46 sm:h-46 md:w-56 md:h-56 lg:w-72 lg:h-72  " alt='slider img 1'   />
           <div className="flex flex-col">
