@@ -9,10 +9,10 @@ const Footer = () => {
   return (
     <div className="text-white">
       <div className="flex justify-between items-center bg-black w-full">
-        <div className="p-4">
-          <h1>Mobile</h1>
-          <h1>Address</h1>
-          <h1>Email</h1>
+        <div className="p-4 text-xs flex flex-col gap-2">
+          <h1>Telephone: 0700333433</h1>
+          <h1>Svarstid: mellan 13:00 och 15:00 alla dagar <br></br>Kontor: fröknegårdsvägen 18 Kristianstad</h1>
+          <h1>EMAIL: Support@smartboost.se</h1>
         </div>
         <div className="hidden lg:block">
           <ul>

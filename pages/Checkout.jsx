@@ -150,7 +150,7 @@ const Checkout = () => {
                         <PayPalScriptProvider 
                             options={
                               {
-                                'client-id': 'AV7wUYM7TOWXHbyfvc6Bty4QhBQjEmIx34ZRZ2R6dAzp-_BiLlgBsBl1hiBM2kTqWS9OJWoGh553bGys',
+                                'client-id': 'AXBH_ILMGyUh9ab05YY4-g0E1cTVvJUWIJ7uDlzR749gwhiQ7-mgy6Wo9HSoC5WZ_dNZMJ8SJYLdUjwQ',
                                 currency:'SEK'
                               }}>
                           <PayPalButtons 
