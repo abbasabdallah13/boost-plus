@@ -35,8 +35,11 @@ import cashImg from '../assets/cash.png';
 import getStripe from "../lib/getStripe";
 import { toast } from "react-hot-toast";
 import { useRouter } from 'next/router';
+import { createPaymentRequest } from "../lib/swishClient";
+
 
 const Checkout = () => {
+  createPaymentRequest();
   const router = useRouter();
   const paymentMethods = [
     {

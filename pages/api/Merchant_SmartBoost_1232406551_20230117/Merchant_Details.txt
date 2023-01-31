@@ -1,0 +1,20 @@
+Company and tester user added in Sandbox environment.
+Certificates uploaded in confluence.
+
+------------------------------
+Merchant:
+------------------------------
+Company Name:Smart Boost
+Org no:5591781348
+Swish Number:1232406551
+
+------------------------------
+Testers:
+------------------------------
+Name:Abbas Abdallah
+SSN:199203222394
+Swish Number:46732325233
+
+Name:Anders Salman
+SSN:199203222386
+Swish Number:46732325234
