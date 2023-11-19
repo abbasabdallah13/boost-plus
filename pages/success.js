@@ -19,6 +19,8 @@ const success = () => {
             value: '+46700555354'
         } ]
 
+    
+
     useEffect(() => {
         console.log('rendered');
         const handleCheckoutBtn = () => {
@@ -41,6 +43,8 @@ const success = () => {
       runFireworks();
       setFullName('');
     }, []);
+
+
   return (
   <div className="h-screen">
     <div className="mt-[8rem] p-2 text-center">

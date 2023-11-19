@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-import { client } from "../lib/client";
 import { useStateContext } from "../context/StateContext";
 import Image from "next/image";
 
@@ -35,11 +34,10 @@ import cashImg from '../assets/cash.png';
 import getStripe from "../lib/getStripe";
 import { toast } from "react-hot-toast";
 import { useRouter } from 'next/router';
-// import { createPaymentRequest } from "../lib/swishClient";
+import SwishPaymentMethod from "../components/SwishPaymentMethod";
 
 
 const Checkout = () => {
-  // createPaymentRequest();
   const router = useRouter();
   const paymentMethods = [
     {
@@ -65,8 +63,6 @@ const Checkout = () => {
   ]
   const { cartItems, totalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
   
-  
-  
   const handleCreditDebitPayments = async () => {
     const stripe = await getStripe();
 
@@ -87,11 +83,12 @@ const Checkout = () => {
     stripe.redirectToCheckout({sessionId: data.id});
   }
 
-      const handlePaymentMethod = (e) => {
-        setPaymentMethod(e.target.value);
-      }
-
  
+
+  const handlePaymentMethod = (e) => {
+    setPaymentMethod(e.target.value);
+  }
+
       
   return (
   <div className="mt-28 p-4">
@@ -190,9 +187,7 @@ const Checkout = () => {
                     }
                   </div>
                 ):paymentMethod === 'swish' && el.value === 'swish' ? (
-                  <div>
-                    swish
-                  </div>
+                  <SwishPaymentMethod />
                 ):''
               }
               </>

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "proxy": "https://localhost:3001",
   "dependencies": {
     "@fontsource/irish-grover": "^4.5.7",
     "@next/font": "13.1.1",
@@ -16,6 +17,7 @@
     "@stripe/stripe-js": "^1.46.0",
     "axios": "^1.2.3",
     "canvas-confetti": "^1.6.0",
+    "cors": "^2.8.5",
     "framer-motion": "^8.3.3",
     "next": "13.1.1",
     "rating-star": "^1.1.0",
@@ -25,13 +27,17 @@
     "react-icons": "^4.7.1",
     "react-loader-spinner": "^5.3.4",
     "react-multi-carousel": "^2.8.2",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "stars-rating": "^1.1.0",
     "stripe": "^11.6.0",
-    "swish-payments": "^0.1.7"
+    "swish-payments": "^0.1.7",
+    "ws": "^8.14.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
+    "raw-loader": "^4.0.2",
     "tailwindcss": "^3.2.4"
   }
 }
