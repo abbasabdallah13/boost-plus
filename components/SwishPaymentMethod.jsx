@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 
 
 const SwishPaymentMethod = () => {
-    const socket = io('http://192.168.0.109:5000/'); // Replace with your actual backend URL
+    const socket = io('https://swish-success-server-honeycoded.vercel.app/'); // Replace with your actual backend URL
 
     const [swishMobileNumber, setSwishMobileNumber] = useState('')
     const [swishPaymentErrorMessage, setSwishPaymentErrorMessage] = useState('')
