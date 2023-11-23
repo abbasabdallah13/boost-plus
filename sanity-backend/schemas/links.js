@@ -4,7 +4,7 @@ export const links = {
     type: 'document',
     fields: [
         {
-            name: 'fullname',
+            name: 'fullName',
             title: 'Full Name',
             type: 'string'
         },
@@ -14,15 +14,27 @@ export const links = {
             type: 'string'
         },
         {
+            name: 'paymentMethod', 
+            title: 'Payment Method',
+            type: 'string',
+        },
+        {
+            name: 'pickupTime', 
+            title: 'Date and Time for Pickup',
+            type: 'string',
+            defaultValue: 'n/a'
+        },         
+        {
             name: 'link', 
             title: 'Link',
             type: 'string',
         },
         {
-            name: 'paymentMethod', 
-            title: 'Payment Method',
+            name: 'purchaseDate', 
+            title: 'Purchase Date',
             type: 'string',
-        },        {
+        }, 
+        {
             name: 'status', 
             title: 'Status',
             type: 'string',

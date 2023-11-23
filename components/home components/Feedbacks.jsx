@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import boy from '../assets/boy.png';
-import girl from '../assets/girl.png';
-import stars from '../assets/stars.png';
+import boy from '../../assets/boy.png';
+import girl from '../../assets/girl.png';
+import stars from '../../assets/stars.png';
 import Image from "next/image";
 import { RatingStar } from "rating-star";
-import { client } from "../lib/client";
+import { client } from "../../lib/client";
 
 const Feedbacks = () => {
     const [users, setUsers] = useState([]);

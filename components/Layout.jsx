@@ -13,14 +13,14 @@ const Layout = ({children}) => {
     </Head>
     <header>
       {
-        pathname === '/DashboardLogin' || pathname === '/Dashboard'|| pathname === '/Dashboard/Links' || pathname === '/Dashboard/Reviews' ? <DashboardNavbar />:(<Navbar />)
+        pathname === '/DashboardLogin' || pathname === '/dashboard'|| pathname === '/dashboard/Links' || pathname === '/dashboard/Reviews' ? <DashboardNavbar />: <Navbar /> 
       }
     </header>
     <main>
       {children}
     </main>
       {
-        pathname === '/DashboardLogin' || pathname === '/Dashboard' || pathname === '/Dashboard/Links' || pathname === '/Dashboard/Reviews' ? '' :(
+        pathname === '/DashboardLogin' || pathname === '/dashboard' || pathname === '/dashboard/Links' || pathname === '/dashboard/Reviews' ? '' :(
           <Footer />
         )
       }

@@ -5,7 +5,7 @@ import { runFireworks } from "../lib/utils";
 import { client } from "../lib/client";
 
 const success = () => {
-    const { setCartItems, setTotalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
+    const { cartItems, setCartItems, totalPrice, setTotalPrice, paymentMethod, setPaymentMethod, userDetails, setUserDetails, pickupDateAndTime, setPickupDateAndTime } = useStateContext();
     const contactMethods = [
         {
             title:'chat',
@@ -22,45 +22,61 @@ const success = () => {
     
 
     useEffect(() => {
-        console.log('rendered');
-        const handleCheckoutBtn = () => {
+        const sendOrderToDb = () => {
+            const userDetails = JSON.parse(localStorage.getItem('userDetails'));
             let newArr = JSON.parse(localStorage.getItem('cart')).map(el => {
               return {
                 _type: 'links',
-                fullname: fullName,
+                fullName: `${userDetails.firstName} ${userDetails.lastName}`,
+                voucher: el.fromSelect.split(',')[0] + " " + el.voucherName,
+                paymentMethod: paymentMethod.toUpperCase(),
+                pickupTime: pickupDateAndTime ? pickupDateAndTime : 'n/a'  ,
                 link: el.url,
-                voucher: el.voucherName,
-                paymentMethod: paymentMethod,
+                purchaseDate: new Date().toString(),
                 status: 'pending'
               }
             });
             newArr.map(el => client.create(el))
           }
-      handleCheckoutBtn();
-      setCartItems([]);
-      setTotalPrice(0);
-      setPaymentMethod('');
-      runFireworks();
-      setFullName('');
+
+        const sendReceipt = async() => {
+            await fetch('/api/sendReceipt', {
+              method: "POST",
+              body: JSON.stringify({paymentMethod, totalPrice, userDetails, cartItems, pickupDateAndTime})
+            })
+          }
+
+        sendOrderToDb();
+        sendReceipt();        
+        setCartItems([]);
+        setTotalPrice(0);
+        setPaymentMethod('');
+        setPickupDateAndTime('n/a')
+        runFireworks();
+        setUserDetails({})
     }, []);
 
 
   return (
-  <div className="h-screen">
-    <div className="mt-[8rem] p-2 text-center">
-        <h1 className="text-2xl">Thank You for your purchase</h1>
-        <p className="mt-4">Kindly check your email for a receipt.</p>
-        <p>If you have any questions don't hesitate contact us using one of the methods below:</p>
-        <div className="mt-8"><Link className="p-4 border-2 bg-red-600 text-white text-xl rounded-lg" href={'/'}>Continue Shopping</Link></div>
-        <div className="flex flex-col mt-4">
-            {
-                contactMethods.map(el => (
-                    <div className="p-4 capitalize bg-blue2 text-white rounded-md mt-2 flex flex-col justify-center">
-                       <h1 className="text-xl">{el.title}</h1>
-                        <p className="text-sm ml-2">{el.value}</p>
-                    </div>
-                ))
-            }
+  <div className="h-fit min-h-[70vh]">
+    <div className="mt-[8rem] p-2 text-center flex flex-col justify-around">
+        <div>
+            <h1 className="text-2xl font-zen-kaku font-semibold">Thank You for your purchase</h1>
+            <p className="font-heebo mt-2">Kindly check your email for a receipt.</p>
+            <div className="h-20 mt-8"><Link className="p-2 bg-red-600 text-white text-xl rounded-lg font-zen-kaku font-semibold" href={'/'}>Continue Shopping</Link></div>
+        </div>
+        <div>
+            <p className="font-heebo">For further assistance, please reach out to our support team using one of the methods below</p>
+            <div className="flex flex-col items-center">
+                {
+                    contactMethods.map(el => (
+                        <div className="capitalize bg-blue2 text-white rounded-md mt-2 flex flex-col justify-center w-3/4 max-w-[225px] py-2">
+                        <h1 className="text-xl font-zen-kaku font-semibold">{el.title}</h1>
+                            <p className="text-sm ml-2 font-heebo">{el.value}</p>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     </div>
     

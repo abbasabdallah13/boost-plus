@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { InfinitySpin } from "react-loader-spinner";
-import { client } from "../../lib/client";
+import { client } from "../../../lib/client";
 import { useRouter } from 'next/router';
 
 const Reviews = () => {

@@ -1,5 +1,4 @@
-import React, { useEffect,useState } from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import React, { useEffect, useState } from "react";
 
 import { useStateContext } from "../context/StateContext";
 import Image from "next/image";
@@ -26,177 +25,47 @@ import youtubeViewsImg from '../assets/youtubeViews.png'
 import twitterLikesImg from '../assets/twitterLikes.png';
 import twitterFollowersImg from '../assets/twitterFollowers.png';
 
-import visaMasterCardImg from '../assets/visaMaster.png';
-import paypalImg from '../assets/paypal.png';
-import swishImg from '../assets/swish.png';
-import cashImg from '../assets/cash.png';
-
-import getStripe from "../lib/getStripe";
-import { toast } from "react-hot-toast";
-import { useRouter } from 'next/router';
-import SwishPaymentMethod from "../components/SwishPaymentMethod";
+import CheckoutUserDetails from "../components/checkout components/CheckoutUserDetails";
+import PaymentMethod from "../components/checkout components/PaymentMethod";
 
 
 const Checkout = () => {
-  const router = useRouter();
-  const paymentMethods = [
-    {
-      title: 'Credit/Debit Card',
-      value:'creditDebitCard',
-      img: visaMasterCardImg
-    },
-    {
-      title: 'Paypal',
-      value:'paypal',
-      img: paypalImg
-    },
-    {
-      title: 'Swish',
-      value:'swish',
-      img: swishImg
-    },
-    {
-      title: 'Cash In Store',
-      value:'cash',
-      img: cashImg
-    },
-  ]
   const { cartItems, totalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
   
-  const handleCreditDebitPayments = async () => {
-    const stripe = await getStripe();
-
-    const response = await fetch('/api/stripe',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(cartItems)
-    })
-
-    if(response.statusCode === 500) return;
-    
-    const data = await response.json();
-
-    toast.loading('Redirecting..');
-
-    stripe.redirectToCheckout({sessionId: data.id});
-  }
-
- 
-
-  const handlePaymentMethod = (e) => {
-    setPaymentMethod(e.target.value);
-  }
-
+  const [paymentMethodModal, setPaymentMethodModal] = useState(false)
       
   return (
-  <div className="mt-28 p-4">
+  <div className="mt-28 p-4 h-fit min-h-[70vh]">
     {/* order details section */}
     <div className="border-b-2 border-black">
-      <h1 className="text-center text-4xl">Your Order</h1>
+      <h1 className="text-4xl font-zen-kaku font-semibold">Checkout</h1>
+      <h3 className="font-heebo text-xl text-gray-500 m-2">Cart Summary</h3>
       <div className="overflow-y-scroll max-h-96">
-        {cartItems.map(el => (
-          <div className="flex items-center border-2 rounded-lg p-2 mt-4 overflow-x-scroll hidden-scrollbar">
-            <Image className="h-16 w-16 " src={el.voucherCode === 'instaLikes' ? instaLikesImg : el.voucherCode === 'instaFollowers' ? followersImg : el.voucherCode === 'instaComments' ? commentsImg : el.voucherCode === 'instaViews' ? viewsImg : el.voucherCode === 'fbLikes' ? fbLikesImg : el.voucherCode === 'fbComments' ? fbCommentsImg : el.voucherCode === 'fbPageLikes' ? fbPageLikesImg : el.voucherCode === 'youtubeLikes' ? youtubeLikesImg : el.voucherCode === 'youtubeComments' ? youtubeCommentsImg : el.voucherCode === 'youtubeViews' ? youtubeViewsImg : el.voucherCode === 'youtubeSubscribers' ? youtubeSubscribersImg : el.voucherCode === 'tiktokComments' ? tiktokCommentsImg : el.voucherCode === 'tiktokLikes' ? tiktokLikesImg : el.voucherCode === 'tiktokShares' ? tiktokSharesImg : el.voucherCode === 'tiktokViews' ? tiktokViewsImg : el.voucherCode === 'twitterLikes' ? twitterLikesImg : el.voucherCode === 'twitterFollowers' ? twitterFollowersImg : ''}  alt='voucher' />
-            <div className="p-2 flex flex-col">
-              <p className="font-semibold text-xl">{el.voucherName}</p>
-              <p className="mt-2"><span className="font-bold">Link:</span> {el.url}</p>
-              <p className="font-bold mt-2">{el.fromSelect.split(',')[1]} SEK</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex justify-between mt-4">
-        <p className="text-2xl">Total</p>
-        <p className="text-2xl">{totalPrice} SEK</p>
-      </div>
-    </div>
-  
-    {/* payment method section */}
-    <div>
-        <h1 className="text-4xl text-center mt-4">Payment Method and User Details</h1>
-          <div className="mt-4">
-            <label>Full Name</label>
-            <input className="border-2 rounded-md ml-2 px-2 w-full"  type='text' value={fullName} onChange={(e)=>{setFullName(e.target.value); console.log(fullName)}} />
-          </div>
-        <div className="flex flex-col">
         {
-          paymentMethods.map((el,i) => (
-            <>
-            <div className={`border-2 rounded-lg flex p-2 ${i===0?'mt-4':'mt-2'}`}>
-              <input type='radio' name='paymentMethod' value={el.value} onChange={handlePaymentMethod} />
-              <label className="flex items-center">
-                <Image src={el.img} className={`w-20 h-6 ml-2 ${el.img === cashImg?'w-8 h-8':''}`}  alt={el.title} />
-                <p className="ml-4">{el.title}</p>  
-              </label>
+          cartItems.map(el => (
+            <div className="flex items-center border-2 rounded-lg p-2 mt-4">
+              <Image className="h-16 w-16 " src={el.voucherCode === 'instaLikes' ? instaLikesImg : el.voucherCode === 'instaFollowers' ? followersImg : el.voucherCode === 'instaComments' ? commentsImg : el.voucherCode === 'instaViews' ? viewsImg : el.voucherCode === 'fbLikes' ? fbLikesImg : el.voucherCode === 'fbComments' ? fbCommentsImg : el.voucherCode === 'fbPageLikes' ? fbPageLikesImg : el.voucherCode === 'youtubeLikes' ? youtubeLikesImg : el.voucherCode === 'youtubeComments' ? youtubeCommentsImg : el.voucherCode === 'youtubeViews' ? youtubeViewsImg : el.voucherCode === 'youtubeSubscribers' ? youtubeSubscribersImg : el.voucherCode === 'tiktokComments' ? tiktokCommentsImg : el.voucherCode === 'tiktokLikes' ? tiktokLikesImg : el.voucherCode === 'tiktokShares' ? tiktokSharesImg : el.voucherCode === 'tiktokViews' ? tiktokViewsImg : el.voucherCode === 'twitterLikes' ? twitterLikesImg : el.voucherCode === 'twitterFollowers' ? twitterFollowersImg : ''}  alt='voucher' />
+              <div className="p-2 flex flex-col">
+                <p className="font-zen-kaku font-semibold text-lg">{el.fromSelect.split(',')[0]} {el.voucherName}</p>
+                <p className="mt-2 text-xs font-heebo">{el.url}</p>
+                <p className="font-bold mt-2 text-xs text-slate-600 font-zen-kaku font-bold">{el.fromSelect.split(',')[1]} SEK</p>
+              </div>
             </div>
-              {
-                paymentMethod === 'creditDebitCard' && el.value === 'creditDebitCard' ?(
-                  <div className="p-2">
-                    {
-                      cartItems.length > 0 ? (
-                        <button className="border-2 px-2 mt-2" onClick={handleCreditDebitPayments}>Pay with Stripe</button>
-                      ): (
-                        'Cart is Empty'
-                      )
-                    }
-                  </div>
-                ):paymentMethod === 'paypal' && el.value === 'paypal' ? (
-                  <div className="flex flex-col items-left">
-                    {
-                      cartItems.length > 0 ? (
-                        <>
-                        <PayPalScriptProvider 
-                            options={
-                              {
-                                'client-id': 'AXBH_ILMGyUh9ab05YY4-g0E1cTVvJUWIJ7uDlzR749gwhiQ7-mgy6Wo9HSoC5WZ_dNZMJ8SJYLdUjwQ',
-                                currency:'SEK'
-                              }}>
-                          <PayPalButtons 
-                          className="w-40 mt-4 ml-4"
-                          createOrder={(data, actions) => {
-                            return actions.order
-                                .create({
-                                    purchase_units: [
-                                        {
-                                            amount: {
-                                              value: `${totalPrice}`,
-                                              currency_code: 'SEK'
-                                            },
-                                        },
-                                    ],
-                                })
-                                .then((orderId) => {
-                                    // Your code here after create the order
-                                    return orderId;
-                                });
-                        }}
-                        onApprove={function (data, actions) {
-                            return actions.order.capture().then(function () {
-                                // Your code here after capture the order
-                                router.push('/success')
-                              });
-                        }}
-                          />
-                        </PayPalScriptProvider>
-                        </>
-                      ):(
-                        'Cart is Empty'
-                      )
-                    }
-                  </div>
-                ):paymentMethod === 'swish' && el.value === 'swish' ? (
-                  <SwishPaymentMethod />
-                ):''
-              }
-              </>
           ))
         }
-        </div>
+      </div>
+      <div className="flex justify-between mt-4">
+        <p className="text-xl">Total</p>
+        <p className="text-xl">{totalPrice} SEK</p>
+      </div>
     </div>
-    {/* Pay Button */}
-    <button className="bg-blue2 p-4 text-white text-center w-full mt-2">Pay Now</button>
+
+    {/* User Details */}
+    <CheckoutUserDetails setPaymentMethodModal={setPaymentMethodModal} />
+        
+    {/* payment method section */}
+        <PaymentMethod paymentMethodModal={paymentMethodModal}/>
+
   </div>
   )
 };

@@ -23,9 +23,6 @@ export default async function handler(req, res) {
       }
       
         const agent = new https.Agent({
-                // cert: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_Merchant_TestSigningCertificate_1234679304.pem', { encoding: 'utf8' }),
-                // key: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_Merchant_TestSigningCertificate_1234679304.key', { encoding: 'utf8' }),
-                // ca: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
                 cert: fs.readFileSync('./ssl/Merchant_SmartBoost_1232406551_20230117/myCertificate.pem', { encoding: 'utf8' }),
                 key: fs.readFileSync('./ssl/Merchant_SmartBoost_1232406551_20230117/myPrivateKey.key', { encoding: 'utf8' }),
                 ca: fs.readFileSync('./ssl/Merchant_SmartBoost_1232406551_20230117/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
@@ -41,7 +38,7 @@ export default async function handler(req, res) {
 
     // Setup the data object for the payment
     const data = {
-      callbackUrl: 'https://bf5f-185-97-94-87.ngrok-free.app/api/success',
+      callbackUrl: process.env.SWISH_CALLBACK,
       payeeAlias: '1232406551',
       currency: 'SEK',
       payerAlias: swishMobileNumber,
@@ -50,7 +47,7 @@ export default async function handler(req, res) {
     };
 
     const response = await client.put(
-      `https://staging.getswish.pub.tds.tieto.com/cpc-swish/api/v2/paymentrequests/${instructionId}`,
+      `${process.env.SWISH_PAYMENT_REQUEST_ENDPONT}/${instructionId}`,
       data
     );
 

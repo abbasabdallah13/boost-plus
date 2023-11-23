@@ -1,33 +1,77 @@
-const axios = require('axios')
-const { createServer } = require('http')
-const { Server } = require('socket.io')
+// import { Server } from 'socket.io'
 
-const httpServer = createServer();
-const io = new Server(httpServer, {
-    cors: {
-        origin: '*',
-        methods: ["GET","POST"]
+// const initializeSocket = (httpServer) => {
+//     const io = new Server(httpServer)
+
+//     // io.on('connection', socket => {
+//     //     socket.on('frontendMsg', msg => {
+//     //       console.log(msg)
+//     //       // const currentListeners = io.listeners('request').length;
+//     //       socket.emit('serverMsg', 'Hello from Server')
+//     //       // socket.emit('serverMsg',currentListeners)
+          
+//     //   })
+//     // })
+
+
+//     return io;
+// }
+
+
+// let ioInstance;
+
+// const SocketHandler = (req, res) => {
+//   if (ioInstance) {
+//     console.log('Socket is already running')
+//   } else {
+//     console.log('Socket is initializing')
+//     ioInstance = initializeSocket(res.socket.server)
+//   }
+
+//   ioInstance.on('frontendMsg', msg => {
+//           ioInstance.emit('serverMsg', 'Hello from Server')
+//   })
+ 
+// if (req.method === 'POST') {
+//     const paymentRequestObject = req.body;
+//     console.log('Received Swish callback', paymentRequestObject);
+
+//     ioInstance.emit('swishObject', paymentRequestObject);
+//   }
+
+//   res.end()
+// }
+
+// export default SocketHandler
+
+import { Server } from 'socket.io';
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '1mb',
+    },
+  },
+};
+
+const io = new Server();
+
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    try {
+      const paymentDetails = req.body;
+
+      console.log('Received payment details:', paymentDetails);
+
+      // Send payment details to connected clients
+      io.emit('swishObject', paymentDetails);
+
+      res.status(200).json({ success: true });
+    } catch (error) {
+      console.error('Error handling Swish webhook:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-})
-
-httpServer.on('upgrade', (request, socket, head) => {
-    io.handleUpgrade(request, socket, head);
-  });
-  
-  // This line is crucial - handle connections on the original Next.js API route
-  io.on('connection', (socket) => {
-    console.log('Socket.IO connection established');
-  })
-
-
-export default async function handler (req,res){
-    if(req.method === 'POST'){
-        const paymentRequestObject = req.body;
-        console.log('Received Swish callback', paymentRequestObject)
-
-
-    } else {
-        res.status(405).json({ error: 'Method not allowed'})
-    } 
+  } else {
+    res.status(405).json({ error: 'Method Not Allowed' });
+  }
 }
-

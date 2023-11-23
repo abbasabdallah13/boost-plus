@@ -7,10 +7,9 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
     const [cartItems, setCartItems] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('cart')) || []);
     const [totalPrice, setTotalPrice] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('total')) || 0);
-    const [fullName, setFullName] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('fullname')) || '');
     const [paymentMethod, setPaymentMethod] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('paymentMethod')) || '');
-
-    
+    const [userDetails, setUserDetails] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('userDetails')) || '')
+    const [pickupDateAndTime, setPickupDateAndTime] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('pickupDateAndTime')) || 'n/a')
 
     const addToCart = (url,fromSelect,voucherCode,voucherName) => {
         if(!url || !fromSelect.length){
@@ -50,9 +49,10 @@ export const StateContext = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('cart',JSON.stringify(cartItems));
         localStorage.setItem('total',JSON.stringify(totalPrice));
-        localStorage.setItem('fullname', JSON.stringify(fullName))
         localStorage.setItem('paymentMethod', JSON.stringify(paymentMethod))
-    }, [cartItems, totalPrice,fullName, paymentMethod]);    
+        localStorage.setItem('userDetails', JSON.stringify(userDetails))
+        localStorage.setItem('pickupDateAndTime', JSON.stringify(pickupDateAndTime))
+    }, [cartItems, totalPrice, paymentMethod, userDetails, pickupDateAndTime]);    
         
 
     return (
@@ -64,10 +64,12 @@ export const StateContext = ({ children }) => {
             setTotalPrice,
             addToCart,
             deleteItem,
-            fullName,
-            setFullName,
             paymentMethod,
-            setPaymentMethod
+            setPaymentMethod,
+            setUserDetails,
+            userDetails,
+            pickupDateAndTime,
+            setPickupDateAndTime
         }}>
             {children}
         </Context.Provider>

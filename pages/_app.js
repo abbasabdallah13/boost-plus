@@ -1,5 +1,6 @@
 import '../styles/globals.css'
-import "@fontsource/irish-grover";
+import '@fontsource/zen-kaku-gothic-new';
+import '@fontsource-variable/heebo';
 import { Toaster } from 'react-hot-toast'
 
 

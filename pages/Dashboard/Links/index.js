@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { client } from "../../lib/client";
+import { client } from "../../../lib/client";
 import { InfinitySpin } from "react-loader-spinner";
 import { MdDoneAll } from 'react-icons/md';
 
@@ -30,7 +30,7 @@ const Links = () => {
         )}
         {
             links.map(el => (
-                <div className="bg-[#272935] rounded-lg flex text-white p-2 mt-2" onClick={() => router.push(`/Dashboard/Links/${el._id}`)}>
+                <div className="bg-[#272935] rounded-lg flex text-white p-2 mt-2 cursor-pointer" onClick={() => router.push(`/dashboard/Links/${el._id}`)}>
                     <div className="w-[90%]">
                         <h1 className="text-3xl">{el.fullname}</h1>
                         <h1 className="text-xl">{el.voucher}</h1>
