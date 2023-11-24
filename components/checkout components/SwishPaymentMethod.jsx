@@ -44,9 +44,12 @@ const SwishPaymentMethod = () => {
     
 
   useEffect(() => {
+    console.log(process.env.NEXT_PUBLIC_SWISH_PAYMENT_OBJECT_SOCKET_IO_SERVER)
     // Connect to the Socket.IO server
-    const socket = io('http://localhost:3001'); // Replace with your server URL
-
+    const socket = io(process.env.NEXT_PUBLIC_SWISH_PAYMENT_OBJECT_SOCKET_IO_SERVER); // Replace with your server URL
+    socket.on("connect", () => {
+      console.log("connected to Socket.io server")
+    })
     // Listen for the 'paymentDetails' event
     socket.on('paymentDetails', (paymentDetails) => {
       console.log('Received payment details:', paymentDetails);
