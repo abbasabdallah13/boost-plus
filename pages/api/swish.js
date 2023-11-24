@@ -25,9 +25,9 @@ export default async function handler(req, res) {
       }
       
         const agent = new https.Agent({
-                cert: fs.readFileSync('rootPath/ssl/Merchant_SmartBoost_1232406551_20230117/myCertificate.pem', { encoding: 'utf8' }),
-                key: fs.readFileSync('rootPath/ssl/Merchant_SmartBoost_1232406551_20230117/myPrivateKey.key', { encoding: 'utf8' }),
-                ca: fs.readFileSync('rootPath/ssl/Merchant_SmartBoost_1232406551_20230117/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
+                cert: fs.readFileSync(`${rootPath}/ssl/Merchant_SmartBoost_1232406551_20230117/myCertificate.pem`, { encoding: 'utf8' }),
+                key: fs.readFileSync(`${rootPath}/ssl/Merchant_SmartBoost_1232406551_20230117/myPrivateKey.key`, { encoding: 'utf8' }),
+                ca: fs.readFileSync(`${rootPath}/ssl/Merchant_SmartBoost_1232406551_20230117/Swish_TLS_RootCA.pem`, { encoding: 'utf8' }),
                 passphrase: 'swish'            
         });
 
