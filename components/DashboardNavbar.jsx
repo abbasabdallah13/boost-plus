@@ -9,16 +9,16 @@ const DashboardNavbar = () => {
 
     const links = [
         {
-            name: 'HOME',
+            name: 'Home',
             link: '/',
         },
         {
-            name: 'LINKS',
-            link: '/Links',
+            name: 'Pending Links',
+            link: '/links/pending',
         },
         {
-            name: 'REVIEWS',
-            link: '/Reviews',
+            name: 'Completed Links',
+            link: '/links/done',
         } 
     ]
 
@@ -38,7 +38,7 @@ const DashboardNavbar = () => {
                     <div className="flex flex-col text-white text-4xl p-2">
                         {
                             links.map((el,i) => (
-                                <Link className={`${i === 0?'':'mt-4'}`}  href={`/dashboard/${el.link}`} onClick={() => setSidebar(false)}>{el.name}</Link>
+                                <Link className={`${i === 0?'':'mt-4'}`}  href={`/dashboard${el.link}`} onClick={() => setSidebar(false)}>{el.name}</Link>
                             ))
                         }
                     </div>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router'
-import { InfinitySpin } from 'react-loader-spinner'
 import Image from "next/image";
 import logo from '../../assets/logo.png';
+import InfinitySpinLoader from "../../components/dashboard components/InfinitySpinLoader";
 
 
 const Dashboard = () => {
@@ -30,9 +30,7 @@ const Dashboard = () => {
     <div className="relative h-screen">
         {
             loading && (
-                <div className="absolute top-[-4.5rem] left-0 h-screen w-screen bg-[#272935] flex items-center justify-center z-[999]">
-                    <InfinitySpin width='200'color="#066995" />
-                </div>            
+                <InfinitySpinLoader />
             )
         }
 

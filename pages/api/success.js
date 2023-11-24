@@ -30,32 +30,6 @@
 
 //   ioInstance.on('frontendMsg', msg => {
 //           ioInstance.emit('serverMsg', 'Hello from Server')
-//   })
- 
-// if (req.method === 'POST') {
-//     const paymentRequestObject = req.body;
-//     console.log('Received Swish callback', paymentRequestObject);
-
-//     ioInstance.emit('swishObject', paymentRequestObject);
-//   }
-
-//   res.end()
-// }
-
-// export default SocketHandler
-
-import { Server } from 'socket.io';
-
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
-  },
-};
-
-const io = new Server();
-
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {

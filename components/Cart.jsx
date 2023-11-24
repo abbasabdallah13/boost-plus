@@ -57,7 +57,7 @@ const Cart = ({ setCartModal }) => {
     {
        cartItems.length === 0 ? (
         <div className="flex flex-col items-center justify-around h-full">
-          <Image className="w-60 h-60 mr-6" src={cartImg} alt='cart' />
+          <Image className="w-48 h-48 mr-6 max-w-full" src={cartImg} alt='cart' />
           <h1 className="text-xl text-center">Your Shopping Cart Is Empty</h1>
           <motion.button 
             whileTap={{ scale: 0.8 }}

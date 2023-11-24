@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import dayjs, { Dayjs } from 'dayjs';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
@@ -42,7 +41,6 @@ function Pickup() {
     <div className="m-4">
         <p className="font-zen-kaku font-semibold mb-2">Kindly choose a time between 13:00 and 15:00 for voucher pickup</p>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DateTimePicker', 'DateTimePicker']}>
                 <DateTimePicker
                 label="Date and Time Picker"
                 value={dateValue}
@@ -51,7 +49,6 @@ function Pickup() {
                 minTime={thirteen}
                 maxTime={fifteen}
                 />
-            </DemoContainer>
         </LocalizationProvider>
         <div className="flex justify-center mt-2">
             <button 
