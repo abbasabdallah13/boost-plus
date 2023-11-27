@@ -3,10 +3,8 @@ import https from 'https';
 import axios from 'axios';
 
 export default async function handler(req, res) {
-  const { totalPrice, swishMobileNumber } = await JSON.parse(req.body)
+  const { totalPrice, swishMobileNumber } = req.body
   try{
-    console.log(process.cwd())
-    const rootPath = process.cwd()
     function generateSwishUUID() {
         const hexChars = '0123456789ABCDEF';
         let uuid = '';
@@ -25,9 +23,9 @@ export default async function handler(req, res) {
       }
       
         const agent = new https.Agent({
-                cert: fs.readFileSync(__dirname,`../../ssl/Merchant_SmartBoost_1232406551_20230117/myCertificate.pem`, { encoding: 'utf8' }),
-                key: fs.readFileSync(__dirname,`../../ssl/Merchant_SmartBoost_1232406551_20230117/myPrivateKey.key`, { encoding: 'utf8' }),
-                ca: fs.readFileSync(__dirname,`../../ssl/Merchant_SmartBoost_1232406551_20230117/Swish_TLS_RootCA.pem`, { encoding: 'utf8' }),
+                cert: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
+                key: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.key', { encoding: 'utf8' }),
+                ca: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
                 passphrase: 'swish'            
         });
 
@@ -43,8 +41,8 @@ export default async function handler(req, res) {
       callbackUrl: process.env.SWISH_CALLBACK,
       payeeAlias: '1232406551',
       currency: 'SEK',
-      payerAlias: swishMobileNumber,
-      amount: totalPrice,
+      payerAlias: '46732325233',
+      amount: '100',
       message: 'Your Smart Boost Order'
     };
 
@@ -57,26 +55,8 @@ export default async function handler(req, res) {
     console.log('Payment request created:', response.data);
     res.status(200).json({ message: 'Payment request created' });
   } catch (error) {
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      console.error('Request failed with status code', error.response.status);
-      console.log('Error details:', error.response.data);
-
-      res.status(error.response.status).json({
-        error: 'Request Failed',
-        details: error.response.data[0].errorMessage
-      })
-
-    } else if (error.request) {
-      // The request was made but no response was received
-      console.error('No response received from the server');
-      res.status(500).json({error: 'No response received from the server'})
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      console.error('Error setting up the request:', error.message);
-    }
-    console.error('Full error:', error);
+    
+    console.error(error.message);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }

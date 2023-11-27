@@ -19,13 +19,14 @@ const SwishPaymentMethod = () => {
 
     const payWithSwish = async() => {
         const response = await fetch('/api/swish', {
+          headers: {
+            'Content-Type': 'application/json', // Correct way to set the Content-Type header
+          },
           method: 'post',
-          body: JSON.stringify({
-            totalPrice,
-            swishMobileNumber
-          })
+          body: JSON.stringify({totalPrice, swishMobileNumber})
         })
 
+        console.log(response)
           if(!response.ok){
             const error = await response.json();
             console.log(error);
