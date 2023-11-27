@@ -22,20 +22,20 @@ export default async function handler(req, res) {
         return uuid;
       }
       
-        const agent = new https.Agent({
+      const agent = new https.Agent({
                 cert: fs.readFileSync(__dirname,'../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
                 key: fs.readFileSync(__dirname,'../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.key', { encoding: 'utf8' }),
                 ca: fs.readFileSync(__dirname,'../../ssl/Getswish_Test_Certificates/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
                 passphrase: 'swish'            
         });
 
-    // Using Axios as HTTP library with the custom agent
-    const client = axios.create({
+        // Using Axios as HTTP library with the custom agent
+        const client = axios.create({
       httpsAgent: agent,
     });
 
     const instructionId = generateSwishUUID() ; // Assuming getUUID is a valid function
-
+    
     // Setup the data object for the payment
     const data = {
       callbackUrl: process.env.SWISH_CALLBACK,
@@ -49,14 +49,13 @@ export default async function handler(req, res) {
     const response = await client.put(
       `${process.env.SWISH_PAYMENT_REQUEST_ENDPONT}/${instructionId}`,
       data
-    );
-
-   
-    console.log('Payment request created:', response.data);
-    res.status(200).json({ message: 'Payment request created' });
-  } catch (error) {
-    
-    console.error(error.message);
-    res.status(500).json({ error: 'Internal Server Error' });
+      );
+      
+      console.log('Payment request created:', response.data);
+      res.status(200).json({ message: 'Payment request created' });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
   }
-}
+  
