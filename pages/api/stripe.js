@@ -30,11 +30,7 @@ export default async function handler(req, res) {
           }
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);
-    
-      res.setHeader('Content-Type', 'application/json');
-      res.setHeader('Content-Encoding', 'utf-8');
-      res.status(200).json({message: 'hello from server'});
-    
+          res.status(200).json(session);
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);
     }
