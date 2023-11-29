@@ -26,10 +26,8 @@ const SwishPaymentMethod = () => {
           body: JSON.stringify({totalPrice, swishMobileNumber})
         })
 
-        console.log(response)
           if(!response.ok){
             const error = await response.json();
-            console.log(error);
             setSwishPaymentErrorMessage(error.details);
           } else {
             const { message } = await response.json();
@@ -45,7 +43,6 @@ const SwishPaymentMethod = () => {
     
 
   useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_SWISH_PAYMENT_OBJECT_SOCKET_IO_SERVER)
     // Connect to the Socket.IO server
     const socket = io(process.env.NEXT_PUBLIC_SWISH_PAYMENT_OBJECT_SOCKET_IO_SERVER); // Replace with your server URL
     socket.on("connect", () => {
@@ -53,7 +50,6 @@ const SwishPaymentMethod = () => {
     })
     // Listen for the 'paymentDetails' event
     socket.on('paymentDetails', (paymentDetails) => {
-      console.log('Received payment details:', paymentDetails);
       if(paymentDetails.status === "PAID"){
         router.push('/success')
       }else if(paymentDetails.status === "DECLINED"){

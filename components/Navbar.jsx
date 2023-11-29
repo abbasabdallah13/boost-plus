@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import {React, useEffect, useState} from "react";
 import Image from "next/image";
 import Link from 'next/link';
 import { motion } from "framer-motion"
@@ -12,17 +12,22 @@ import Cart from "./Cart";
 import { SwishBanner } from "./home components";
 
 const Navbar = () => {
+  const { cartItems } = useStateContext();
+  
   const [navbarModal, setNavbarModal] = useState(false);
   const [cartModal, setCartModal] = useState(false);
-
+  const [cartItemsFromStateContext, setCartItemsFromStateContext] = useState(() => {
+    if(typeof localStorage !== 'undefined'){
+      return cartItems
+    }else{
+      return false
+    }
+  })
   
   const links = ['Home','Instagram', 'Facebook', 'Tiktok','YouTube','Twitter', 'Contact'];
 
-  const { cartItems } = useStateContext();
-
   const cartFunctions = () => {
     setCartModal(true);
-
   }
 
   return (
@@ -60,7 +65,7 @@ const Navbar = () => {
               <div className="relative">
                   <Image onClick={cartFunctions} src={cart} alt='cart' className="w-12 h-12 hover:cursor-pointer" />
                   <div className="absolute top-[-2px] right-[-5px] w-5 h-5 bg-red-600 rounded-full text-white flex items-center justify-center text-sm">
-                    {cartItems?.length}
+                    {cartItemsFromStateContext && cartItemsFromStateContext.length}
                   </div>
               </div>
               
@@ -104,3 +109,13 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// export async function getServerSideProps(){
+//   const response = await fetch('/api/cookies/cart-cookie');
+//   const data = await response.json();
+//   return {
+//     props: {
+//       cartCookie: cookie-value
+//     }
+//   }
+// }

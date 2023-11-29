@@ -1,3 +1,5 @@
+"use client"
+
 import { React, createContext, useContext, useState, useEffect } from "react";
 import { toast } from 'react-hot-toast';
 
@@ -5,13 +7,28 @@ const Context = createContext();
 
 
 export const StateContext = ({ children }) => {
-    const [cartItems, setCartItems] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('cart')) || []);
-    const [totalPrice, setTotalPrice] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('total')) || 0);
-    const [paymentMethod, setPaymentMethod] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('paymentMethod')) || '');
-    const [userDetails, setUserDetails] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('userDetails')) || '')
-    const [pickupDateAndTime, setPickupDateAndTime] = useState(typeof(window)!=='undefined'&&JSON.parse(localStorage.getItem('pickupDateAndTime')) || 'n/a')
+    const [cartItems, setCartItems] = useState(() => {
+     const storedState = typeof localStorage !== 'undefined' ? localStorage.getItem("cartItems") : null
+     return storedState ? JSON.parse(storedState) : null   
+    });
+    const [totalPrice, setTotalPrice] = useState(() => {
+        const storedState = typeof localStorage !== 'undefined' ? localStorage.getItem("totalPrice") : null
+        return storedState ? JSON.parse(storedState) : 0   
+       });
+    const [paymentMethod, setPaymentMethod] = useState(() => {
+        const storedState = typeof localStorage !== 'undefined' ? localStorage.getItem("paymentMethod") : null
+        return storedState ? JSON.parse(storedState) : ''   
+       });
+    const [userDetails, setUserDetails] = useState(() => {
+        const storedState = typeof localStorage !== 'undefined' ? localStorage.getItem("userDetails") : null
+        return storedState ? JSON.parse(storedState) : {}   
+       });
+    const [pickupDateAndTime, setPickupDateAndTime] = useState(() => {
+        const storedState = typeof localStorage !== 'undefined' ? localStorage.getItem("pickupDateAndTime") : null
+        return storedState ? JSON.parse(storedState) : 'n/a'   
+       });
 
-    const addToCart = (url,fromSelect,voucherCode,voucherName) => {
+    const addToCart = async(url,fromSelect,voucherCode,voucherName) => {
         if(!url || !fromSelect.length){
             toast.error("You should select an offer and enter a valid url");
         }else if(cartItems.find(el => el.voucherCode === voucherCode && el.url === url)){ //a voucher already exists in cart 
@@ -35,6 +52,16 @@ export const StateContext = ({ children }) => {
             }
             ]);
             setTotalPrice((prev) => Number(prev)+Number(fromSelect.split(',')[1]));            
+            // const response = fetch('api/cookies/cart-cookie',{
+            //     method: 'POST',
+            //     headers: {
+            //         "Content-Type": "application/json"
+            //     },
+            //     body: JSON.stringify({cartItems, totalPrice})
+            // })
+
+            // // const data = await response.json()
+            // console.log(response)
             toast.success(`${fromSelect.split(',')[0]} ${voucherName} added to cart!`)
         }
 
@@ -47,11 +74,13 @@ export const StateContext = ({ children }) => {
         }
 
     useEffect(() => {
-        localStorage.setItem('cart',JSON.stringify(cartItems));
-        localStorage.setItem('total',JSON.stringify(totalPrice));
+    if (typeof window !== 'undefined') {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
         localStorage.setItem('paymentMethod', JSON.stringify(paymentMethod))
         localStorage.setItem('userDetails', JSON.stringify(userDetails))
         localStorage.setItem('pickupDateAndTime', JSON.stringify(pickupDateAndTime))
+    }
     }, [cartItems, totalPrice, paymentMethod, userDetails, pickupDateAndTime]);    
         
 

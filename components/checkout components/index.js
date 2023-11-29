@@ -1,0 +1,5 @@
+export { default as OrderDetails } from './OrderDetails' 
+export { default as PaymentMethod } from './PaymentMethod' 
+export { default as PickupPaymentMethod } from './PickupPaymentMethod' 
+export { default as SwishPaymentMethod } from './SwishPaymentMethod' 
+export { default as UserDetails } from './UserDetails' 

@@ -39,7 +39,7 @@ const Contact = () => {
         <div className="flex flex-col gap-4 items-center mt-8 md:flex-row md:flex-wrap md:justify-center md:items-center xl:gap-[5%] ">
             {  
                 data.map((el,i) => (
-                        <div className="w-[80%] md:w-[35%] lg:w-[18.75%] h-64 p-2 flex flex-col items-center border-2 bg-white lg:mt-8">
+                        <div key={el.title+'-'+i} className="w-[80%] md:w-[35%] lg:w-[18.75%] h-64 p-2 flex flex-col items-center border-2 bg-white lg:mt-8">
                             <Image className={el.dimensions}  src={el.img} alt={el.title} />
                             <p className="text-bold text-xl text-[#E52226]">{el.title}</p>
                             <p className="mt-4 text-[#616162]">{el.description}</p>

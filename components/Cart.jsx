@@ -1,31 +1,8 @@
-import {React, useEffect, useState} from "react";
+import {React, useState} from "react";
 import { useStateContext } from "../context/StateContext";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-
-import instaLikesImg from '../assets/likes.png';
-import followersImg from '../assets/followers.png';
-import commentsImg from '../assets/comments.png';
-import viewsImg from '../assets/views.png';
-
-import fbLikesImg from '../assets/fbLike.png';
-import fbCommentsImg from '../assets/fbComment.png';
-import fbPageLikesImg from '../assets/fbPage.png';
-
-import tiktokCommentsImg from '../assets/tiktokComments.png'
-import tiktokLikesImg from '../assets/tiktokLikes.png'
-import tiktokSharesImg from '../assets/tiktokShares.png'
-import tiktokViewsImg from '../assets/tiktokViews.png'
-
-import youtubeCommentsImg from '../assets/youtubeComments.png'
-import youtubeLikesImg from '../assets/youtubeLikes.png'
-import youtubeSubscribersImg from '../assets/youtubeSubscribers.png'
-import youtubeViewsImg from '../assets/youtubeViews.png'
-
-import twitterLikesImg from '../assets/twitterLikes.png';
-import twitterFollowersImg from '../assets/twitterFollowers.png';
 
 import cartImg from '../assets/cartImg.png'
 
@@ -33,18 +10,12 @@ import { GrClose } from 'react-icons/gr'
 import {BsFillTrashFill} from 'react-icons/bs'
 
 import Link from 'next/link';
+import { getVoucherImg } from "../lib/getVoucherImg";
 
 
 const Cart = ({ setCartModal }) => {
     const [openConfirmDeleteModal, setOpenConfirmDeleteModal] = useState(false)
     const { cartItems, deleteItem, totalPrice } = useStateContext();
-
-    useEffect(() => {
-      console.log(JSON.parse(localStorage.getItem('cart')));
-      console.log(JSON.parse(localStorage.getItem('total')));
-      
-    }, [cartItems]);
-
 
   return (
     <motion.div 
@@ -68,9 +39,9 @@ const Cart = ({ setCartModal }) => {
         <div className='overflow-y-scroll px-2 mt-10 h-[78vh]'>
           {
             cartItems.map((el,i,arr) => (
-            <div className={`relative border-2 ${ i===0 ? 'mt-0' : 'mt-4' } ${i===arr.length-1 && 'mb-4'} p-2`}>
+            <div key={el.voucherCode+'-'+i} className={`relative border-2 ${ i===0 ? 'mt-0' : 'mt-4' } ${i===arr.length-1 && 'mb-4'} p-2`}>
               <div key={el.url} className="flex items-center justify-between gap-2">
-                <Image className="h-16 w-16" alt='social media pic'  src={el.voucherCode === 'instaLikes' ? instaLikesImg : el.voucherCode === 'instaFollowers' ? followersImg : el.voucherCode === 'instaComments' ? commentsImg : el.voucherCode === 'instaViews' ? viewsImg : el.voucherCode === 'fbLikes' ? fbLikesImg : el.voucherCode === 'fbComments' ? fbCommentsImg : el.voucherCode === 'fbPageLikes' ? fbPageLikesImg : el.voucherCode === 'youtubeLikes' ? youtubeLikesImg : el.voucherCode === 'youtubeComments' ? youtubeCommentsImg : el.voucherCode === 'youtubeViews' ? youtubeViewsImg : el.voucherCode === 'youtubeSubscribers' ? youtubeSubscribersImg : el.voucherCode === 'tiktokComments' ? tiktokCommentsImg : el.voucherCode === 'tiktokLikes' ? tiktokLikesImg : el.voucherCode === 'tiktokShares' ? tiktokSharesImg : el.voucherCode === 'tiktokViews' ? tiktokViewsImg : el.voucherCode === 'twitterLikes' ? twitterLikesImg : el.voucherCode === 'twitterFollowers' ? twitterFollowersImg : ''} alt={el.value} />
+                <Image className="h-16 w-16" alt='voucher image' src={getVoucherImg(el.voucherCode)} />
                 <div className="w-4/5"> 
                   <p className="text-sm">{`${el.fromSelect.split(',')[0]} ${el.voucherName}`}</p>
                   <p className="text-[9px] mt-[2px]">{el.url}</p>

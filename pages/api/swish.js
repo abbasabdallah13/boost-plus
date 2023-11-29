@@ -41,8 +41,8 @@ export default async function handler(req, res) {
       callbackUrl: process.env.SWISH_CALLBACK,
       payeeAlias: '1232406551',
       currency: 'SEK',
-      payerAlias: '46732325233',
-      amount: '100',
+      payerAlias: swishMobileNumber,
+      amount: totalPrice,
       message: 'Your Smart Boost Order'
     };
 

@@ -19,7 +19,8 @@ module.exports = {
         'md': '600px',
         'md2': '768px',
         'lg': '900px',
-        'xl': '1024px'
+        'xl': '1024px',
+        '2xl': '1440px'
       },
       fontFamily: {
         'zen-kaku': 'Zen Kaku Gothic New',

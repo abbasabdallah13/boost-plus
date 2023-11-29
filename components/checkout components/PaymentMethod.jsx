@@ -5,8 +5,7 @@ import paypalImg from '../../assets/paypal.png';
 import swishImg from '../../assets/swish.png';
 import cashImg from '../../assets/cash.png';
 import Image from 'next/image';
-import SwishPaymentMethod from './SwishPaymentMethod';
-import Pickup from './Pickup';
+import { SwishPaymentMethod, PickupPaymentMethod } from './index';
 import getStripe from "../../lib/getStripe";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import toast from 'react-hot-toast';
@@ -73,11 +72,11 @@ function PaymentMethod({ paymentMethodModal }) {
             {
             paymentMethods.map((el,i) => (
                 <>
-                    <div className={`border-2 rounded-md flex p-2 ${paymentMethod === el.value && 'border-red-500'} ${i===0?'mt-4':'mt-2'} cursor-pointer`} onClick={() => handlePaymentMethod(el.title)}>
-                    <label className="flex items-center" >
-                        <Image src={el.img} className={`w-20 h-6 ml-2 font-zen-kaku font-semibold ${el.img === cashImg?'w-8 h-8':''}`}  alt={el.title} />
-                        <p className="ml-4">{el.title}</p>  
-                    </label>
+                    <div className={`border-2 rounded-md flex p-2 ${paymentMethod === el.title && 'border-red-500'} ${i===0?'mt-4':'mt-2'} cursor-pointer hover:border-red-500 duration-200`} onClick={() => handlePaymentMethod(el.title)}>
+                        <label className="flex items-center" >
+                            <Image src={el.img} className={`w-20 h-6 ml-2 font-zen-kaku font-semibold ${el.img === cashImg?'w-8 h-8':''}`}  alt={el.title} />
+                            <p className="ml-4">{el.title}</p>  
+                        </label>
                     </div>
                 {
                     paymentMethod === 'Credit/Debit Card' && el.value === 'creditDebitCard' ?(
@@ -137,7 +136,7 @@ function PaymentMethod({ paymentMethodModal }) {
                     ):paymentMethod === 'Swish' && el.value === 'swish' ? (
                     <SwishPaymentMethod />
                     ):paymentMethod === 'Pickup' && el.value === 'pickup' ? (
-                        <Pickup />
+                        <PickupPaymentMethod />
                     ):''
                 }
                 </>

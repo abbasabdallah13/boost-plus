@@ -27,7 +27,6 @@ const Id = () => {
       .patch(router.query.id)
       .set({status:'done'})
       .commit()
-      .then(console.log('updated'))
     }
     
 
