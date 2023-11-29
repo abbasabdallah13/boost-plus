@@ -36,7 +36,7 @@ const success = () => {
                 status: 'pending'
               }
             });
-            newArr.map(el => client.create(el))
+            newArr?.map(el => client.create(el))
           }
 
         const sendReceipt = async() => {
@@ -69,7 +69,7 @@ const success = () => {
             <p className="font-heebo">For further assistance, please reach out to our support team using one of the methods below</p>
             <div className="flex flex-col items-center">
                 {
-                    contactMethods.map(el => (
+                    contactMethods?.map(el => (
                         <div className="capitalize bg-blue2 text-white rounded-md mt-2 flex flex-col justify-center w-3/4 max-w-[225px] py-2">
                         <h1 className="text-xl font-zen-kaku font-semibold">{el.title}</h1>
                             <p className="text-sm ml-2 font-heebo">{el.value}</p>
