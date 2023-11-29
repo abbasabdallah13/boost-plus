@@ -23,8 +23,7 @@ const success = () => {
 
     useEffect(() => {
         const sendOrderToDb = () => {
-            const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-            let newArr = JSON.parse(localStorage.getItem('cart')).map(el => {
+            let newArr = cartItems.map(el => {
               return {
                 _type: 'links',
                 fullName: `${userDetails.firstName} ${userDetails.lastName}`,
