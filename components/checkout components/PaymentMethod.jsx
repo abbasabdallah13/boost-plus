@@ -57,7 +57,7 @@ function PaymentMethod({ paymentMethodModal }) {
         console.log(data)
         toast.loading('Redirecting..');
     
-        // stripe.redirectToCheckout({sessionId: data.id});
+        stripe.redirectToCheckout({sessionId: data.id});
       }
 
   const { cartItems, totalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
