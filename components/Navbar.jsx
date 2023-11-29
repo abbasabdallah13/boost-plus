@@ -16,13 +16,6 @@ const Navbar = () => {
   
   const [navbarModal, setNavbarModal] = useState(false);
   const [cartModal, setCartModal] = useState(false);
-  const [cartItemsFromStateContext, setCartItemsFromStateContext] = useState(() => {
-    if(typeof localStorage !== 'undefined'){
-      return cartItems
-    }else{
-      return false
-    }
-  })
   
   const links = ['Home','Instagram', 'Facebook', 'Tiktok','YouTube','Twitter', 'Contact'];
 
@@ -65,7 +58,7 @@ const Navbar = () => {
               <div className="relative">
                   <Image onClick={cartFunctions} src={cart} alt='cart' className="w-12 h-12 hover:cursor-pointer" />
                   <div className="absolute top-[-2px] right-[-5px] w-5 h-5 bg-red-600 rounded-full text-white flex items-center justify-center text-sm">
-                    {cartItemsFromStateContext && cartItemsFromStateContext.length}
+                    {cartItems.length}
                   </div>
               </div>
               
