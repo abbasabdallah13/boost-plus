@@ -1,9 +1,10 @@
 import React from 'react'
 import { useStateContext } from '../../context/StateContext'
 import { getVoucherImg } from '../../lib/getVoucherImg'
+import Image from 'next/image'
 
 function OrderDetails() {
-    const { cartItems, totalPrice } = useStateContext
+    const { cartItems, totalPrice } = useStateContext()
   return (
     <div className="border-b-2 border-black">
     <h1 className="text-4xl font-zen-kaku font-semibold">Checkout</h1>
@@ -12,7 +13,7 @@ function OrderDetails() {
       {
         cartItems?.map((el, i) => (
           <div key={el.voucherCode+'-'+i} className="flex items-center border-2 rounded-lg p-2 mt-4">
-            <Image className="h-16 w-16" src={getVoucherImg(el.voucherCode)}  alt='voucher' />
+            <Image className="h-16 w-16" src={getVoucherImg(el.voucherCode)} alt='voucher' />
             <div className="p-2 flex flex-col">
               <p className="font-zen-kaku font-semibold text-lg">{el.fromSelect.split(',')[0]} {el.voucherName}</p>
               <p className="mt-2 text-xs font-heebo">{el.url}</p>
