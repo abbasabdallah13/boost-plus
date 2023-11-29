@@ -53,11 +53,11 @@ function PaymentMethod({ paymentMethodModal }) {
         })
         if(response.statusCode === 500) return;
         
-        console.log(response.text)
         const data = await response.json();
+        console.log(data)
         toast.loading('Redirecting..');
     
-        stripe.redirectToCheckout({sessionId: data.id});
+        // stripe.redirectToCheckout({sessionId: data.id});
       }
 
   const { cartItems, totalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
