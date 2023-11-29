@@ -9,7 +9,7 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
     const [cartItems, setCartItems] = useState(() => {
      const storedState = typeof localStorage !== 'undefined' ? localStorage.getItem("cartItems") : null
-     return storedState ? JSON.parse(storedState) : null   
+     return storedState ? JSON.parse(storedState) : []   
     });
     const [totalPrice, setTotalPrice] = useState(() => {
         const storedState = typeof localStorage !== 'undefined' ? localStorage.getItem("totalPrice") : null
