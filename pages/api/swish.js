@@ -10,19 +10,20 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath = '/opt/render/project/src/ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem';
-
+const folderPath = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
+const folderPath2 = __dirname;
+console.log(folderPath2)
 // Read the contents of the folder
-fs.readdir(folderPath, (err, files) => {
-  if (err) {
-    console.error('Error reading folder:', err);
-  } else {
-    console.log(`Contents of ${folderPath}:`);
-    files.forEach((file, index) => {
-      console.log(`${index + 1}. ${file}`);
-    });
-  }
-});
+// fs.readdir(folderPath, (err, files) => {
+//   if (err) {
+//     console.error('Error reading folder:', err);
+//   } else {
+//     console.log(`Contents of ${folderPath}:`);
+//     files.forEach((file, index) => {
+//       console.log(`${index + 1}. ${file}`);
+//     });
+//   }
+// });
 
     // const certificatePath = path.join(__dirname, '../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem')
     // fs.readFile(certificatePath, 'utf8', (err, data) => {
