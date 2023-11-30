@@ -49,11 +49,13 @@ export default async function handler(req, res) {
       
         return uuid;
       }
+
+      const pathToSSL = path.join(__dirname,'../../../../ssl/Getswish_Test_Certificates')
       
       const agent = new https.Agent({
-                cert: fs.readFileSync(__dirname,'../../../../../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
-                key: fs.readFileSync(__dirname,'../../../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.key', { encoding: 'utf8' }),
-                ca: fs.readFileSync(__dirname,'../../../../ssl/Getswish_Test_Certificates/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
+                cert: fs.readFileSync(`${pathToSSL}/Swish_Merchant_TestCertificate_1234679304.pem`, { encoding: 'utf8' }),
+                key: fs.readFileSync(`${pathToSSL}/Swish_Merchant_TestCertificate_1234679304.key`, { encoding: 'utf8' }),
+                ca: fs.readFileSync(`${pathToSSL}/Swish_TLS_RootCA.pem`, { encoding: 'utf8' }),
                 passphrase: 'swish'            
         });
 
