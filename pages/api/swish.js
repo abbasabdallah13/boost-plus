@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath = '/opt/render/project/src/.next/server';
+const folderPath = '/opt/render/project/src/.next/server/pages';
 
 // Read the contents of the folder
 fs.readdir(folderPath, (err, files) => {
