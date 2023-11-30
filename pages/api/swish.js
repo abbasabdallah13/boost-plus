@@ -2,7 +2,6 @@ import fs from 'fs';
 import https from 'https';
 import axios from 'axios';
 const path = require('path');
-const fs = require('fs');
 
 
 export default async function handler(req, res) {
