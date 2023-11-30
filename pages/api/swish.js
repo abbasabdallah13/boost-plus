@@ -1,11 +1,13 @@
 import fs from 'fs';
 import https from 'https';
 import axios from 'axios';
+const path = require('path');
+
 
 export default async function handler(req, res) {
   const { totalPrice, swishMobileNumber } = req.body
   try{
-    const certificatePath = '../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem';
+    const certificatePath = path.join(__dirname, '../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem')
     fs.readFile(certificatePath, 'utf8', (err, data) => {
       if (err) {
         console.error('Error reading certificate file:', err);
@@ -30,12 +32,12 @@ export default async function handler(req, res) {
         return uuid;
       }
       
-      const agent = new https.Agent({
-                cert: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
-                key: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.key', { encoding: 'utf8' }),
-                ca: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
-                passphrase: 'swish'            
-        });
+      // const agent = new https.Agent({
+      //           cert: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem', { encoding: 'utf8' }),
+      //           key: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.key', { encoding: 'utf8' }),
+      //           ca: fs.readFileSync('./ssl/Getswish_Test_Certificates/Swish_TLS_RootCA.pem', { encoding: 'utf8' }),
+      //           passphrase: 'swish'            
+      //   });
 
     //     // Using Axios as HTTP library with the custom agent
     //     const client = axios.create({
