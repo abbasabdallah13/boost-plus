@@ -10,8 +10,11 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath1 = '/opt/render/project/';
-const folderPath2 = '/opt/render/project/src/';
+const folderPath1 = '/opt/render/project/nodes';
+const folderPath2 = '/opt/render/project/src/.npmrc';
+const folderPath3 = '/opt/render/project/src/.next';
+const folderPath4 = '/opt/render/project/src/assets';
+const folderPath5 = '/opt/render/project/src/public';
 // const directoryPath = path.join(__dirname, '../../../..');
 // console.log(directoryPath)
 // // Read the contents of the folder
@@ -27,6 +30,39 @@ fs.readdir(folderPath1, (err, files) => {
 });
 
 fs.readdir(folderPath2, (err, files) => {
+  if (err) {
+    console.error('Error reading folder:', err);
+  } else {
+    console.log(`Contents of ${folderPath2}:`);
+    files.forEach((file, index) => {
+      console.log(`${index + 1}. ${file}`);
+    });
+  }
+});
+
+fs.readdir(folderPath3, (err, files) => {
+  if (err) {
+    console.error('Error reading folder:', err);
+  } else {
+    console.log(`Contents of ${folderPath2}:`);
+    files.forEach((file, index) => {
+      console.log(`${index + 1}. ${file}`);
+    });
+  }
+});
+
+fs.readdir(folderPath4, (err, files) => {
+  if (err) {
+    console.error('Error reading folder:', err);
+  } else {
+    console.log(`Contents of ${folderPath2}:`);
+    files.forEach((file, index) => {
+      console.log(`${index + 1}. ${file}`);
+    });
+  }
+});
+
+fs.readdir(folderPath5, (err, files) => {
   if (err) {
     console.error('Error reading folder:', err);
   } else {
