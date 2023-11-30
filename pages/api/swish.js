@@ -10,8 +10,8 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath = '/opt/render/project/src/.next/static';
-// const folderPath2 = '/opt/render/project/src/.next/server/chunks';
+const folderPath = '/opt/render/project/';
+const folderPath2 = '/opt/render/project/src/';
 
 // Read the contents of the folder
 fs.readdir(folderPath, (err, files) => {
@@ -24,16 +24,16 @@ fs.readdir(folderPath, (err, files) => {
     });
   }
 });
-// fs.readdir(folderPath2, (err, files) => {
-//   if (err) {
-//     console.error('Error reading folder:', err);
-//   } else {
-//     console.log(`Contents of ${folderPath2}:`);
-//     files.forEach((file, index) => {
-//       console.log(`${index + 1}. ${file}`);
-//     });
-//   }
-// });
+fs.readdir(folderPath2, (err, files) => {
+  if (err) {
+    console.error('Error reading folder:', err);
+  } else {
+    console.log(`Contents of ${folderPath2}:`);
+    files.forEach((file, index) => {
+      console.log(`${index + 1}. ${file}`);
+    });
+  }
+});
     // const certificatePath = path.join(__dirname, '../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem')
     // fs.readFile(certificatePath, 'utf8', (err, data) => {
     //   if (err) {
