@@ -10,11 +10,8 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath1 = '/opt/render/project/src/.next/static/VNmMIINKcp3Y0vevZtbF5';
-const folderPath2 = '/opt/render/project/src/.next/static/chunks';
-const folderPath3 = '/opt/render/project/src/.next/static/css';
-const folderPath4 = '/opt/render/project/src/.next/static/media';
-// const directoryPath = path.join(__dirname, '../../../..');
+const folderPath1 = '/opt/render/project/src/.next/server';
+const directoryPath = path.join(__dirname, './');
 // console.log(directoryPath)
 // // Read the contents of the folder
 fs.readdir(folderPath1, (err, files) => {
@@ -28,38 +25,38 @@ fs.readdir(folderPath1, (err, files) => {
   }
 });
 
-fs.readdir(folderPath2, (err, files) => {
+fs.readdir(directoryPath, (err, files) => {
   if (err) {
     console.error('Error reading folder:', err);
   } else {
-    console.log(`Contents of ${folderPath2}:`);
+    console.log(`Contents of ${directoryPath}:`);
     files.forEach((file, index) => {
       console.log(`${index + 1}. ${file}`);
     });
   }
 });
 
-fs.readdir(folderPath3, (err, files) => {
-  if (err) {
-    console.error('Error reading folder:', err);
-  } else {
-    console.log(`Contents of ${folderPath3}:`);
-    files.forEach((file, index) => {
-      console.log(`${index + 1}. ${file}`);
-    });
-  }
-});
+// fs.readdir(folderPath3, (err, files) => {
+//   if (err) {
+//     console.error('Error reading folder:', err);
+//   } else {
+//     console.log(`Contents of ${folderPath3}:`);
+//     files.forEach((file, index) => {
+//       console.log(`${index + 1}. ${file}`);
+//     });
+//   }
+// });
 
-fs.readdir(folderPath4, (err, files) => {
-  if (err) {
-    console.error('Error reading folder:', err);
-  } else {
-    console.log(`Contents of ${folderPath4}:`);
-    files.forEach((file, index) => {
-      console.log(`${index + 1}. ${file}`);
-    });
-  }
-});
+// fs.readdir(folderPath4, (err, files) => {
+//   if (err) {
+//     console.error('Error reading folder:', err);
+//   } else {
+//     console.log(`Contents of ${folderPath4}:`);
+//     files.forEach((file, index) => {
+//       console.log(`${index + 1}. ${file}`);
+//     });
+//   }
+// });
 
 
     // const certificatePath = path.join(__dirname, '../../../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem')
