@@ -2,19 +2,36 @@ import fs from 'fs';
 import https from 'https';
 import axios from 'axios';
 const path = require('path');
+const fs = require('fs');
 
 
 export default async function handler(req, res) {
   const { totalPrice, swishMobileNumber } = req.body
   try{
-    const certificatePath = path.join(__dirname, '../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem')
-    fs.readFile(certificatePath, 'utf8', (err, data) => {
-      if (err) {
-        console.error('Error reading certificate file:', err);
-      } else {
-        console.log('Certificate Content:', data);
-      }
+
+
+// Specify the path to the folder you want to inspect
+const folderPath = '/opt/render/project/src/.next/server';
+
+// Read the contents of the folder
+fs.readdir(folderPath, (err, files) => {
+  if (err) {
+    console.error('Error reading folder:', err);
+  } else {
+    console.log(`Contents of ${folderPath}:`);
+    files.forEach((file, index) => {
+      console.log(`${index + 1}. ${file}`);
     });
+  }
+});
+    // const certificatePath = path.join(__dirname, '../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem')
+    // fs.readFile(certificatePath, 'utf8', (err, data) => {
+    //   if (err) {
+    //     console.error('Error reading certificate file:', err);
+    //   } else {
+    //     console.log('Certificate Content:', data);
+    //   }
+    // });
     function generateSwishUUID() {
         const hexChars = '0123456789ABCDEF';
         let uuid = '';
