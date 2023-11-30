@@ -10,10 +10,21 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath = '/opt/render/project/src/.next/server/pages/api';
+const folderPath = '/opt/render/project/src/.next/';
+const folderPath2 = '/opt/render/project/src/.next/server/chunks';
 
 // Read the contents of the folder
 fs.readdir(folderPath, (err, files) => {
+  if (err) {
+    console.error('Error reading folder:', err);
+  } else {
+    console.log(`Contents of ${folderPath}:`);
+    files.forEach((file, index) => {
+      console.log(`${index + 1}. ${file}`);
+    });
+  }
+});
+fs.readdir(folderPath2, (err, files) => {
   if (err) {
     console.error('Error reading folder:', err);
   } else {
