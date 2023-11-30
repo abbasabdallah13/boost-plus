@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath = '/opt/render/project/src/ssl';
+const folderPath = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
 
 // Read the contents of the folder
 fs.readdir(folderPath, (err, files) => {
