@@ -42,7 +42,7 @@ function findFileOrFolder(startPath, targetName) {
 // Example: Log contents of each directory in the project
 const projectPath = '/';
 
-findFileOrFolder(projectPath);
+findFileOrFolder(folderPath2);
 
 // const folderPath2 = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
 // const directoryPath = path.join(__dirname, './');
