@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath1 = '/var/task/.next/server';
+const folderPath1 = '/var/task/.next';
 // const folderPath2 = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
 // const directoryPath = path.join(__dirname, './');
 // console.log(directoryPath)
