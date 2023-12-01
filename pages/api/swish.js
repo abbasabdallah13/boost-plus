@@ -10,58 +10,24 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath1 = '/var';
+const folderPath1 = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
 const folderPath2 = '/var/task';
 
-const fs = require('fs');
-const path = require('path');
 
-function findFileOrFolder(startPath, targetName) {
-  try {
-    const files = fs.readdirSync(startPath);
-
-    for (const file of files) {
-      const filePath = path.join(startPath, file);
-      const stat = fs.statSync(filePath);
-
-      if (stat.isDirectory()) {
-        // Recursively search in subdirectories
-        const result = findFileOrFolder(filePath, targetName);
-        if (result) {
-          return result;
-        }
-      } else if (file === targetName) {
-        // Found the target file
-        return filePath;
-      }
-    }
-  } catch (error) {
-    console.error('Error while searching:', error.message);
-  }
-
-  // File or folder not found
-  return null;
-}
-
-// Example: Log contents of each directory in the project
-const projectPath = '/';
-
-findFileOrFolder(projectPath, 'ssl');
-
-// const folderPath2 = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
 // const directoryPath = path.join(__dirname, './');
 // console.log(directoryPath)
+
 // // Read the contents of the folder
-// fs.readdir(folderPath1, (err, files) => {
-//   if (err) {
-//     console.error('Error reading folder:', err);
-//   } else {
-//     console.log(`Contents of ${folderPath1}:`);
-//     files.forEach((file, index) => {
-//       console.log(`${index + 1}. ${file}`);
-//     });
-//   }
-// });
+fs.readdir(folderPath1, (err, files) => {
+  if (err) {
+    console.error('Error reading folder:', err);
+  } else {
+    console.log(`Contents of ${folderPath1}:`);
+    files.forEach((file, index) => {
+      console.log(`${index + 1}. ${file}`);
+    });
+  }
+});
 
 // // console.log(__dirname)
 
