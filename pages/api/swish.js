@@ -129,7 +129,7 @@ console.log(__dirname)
     //   data
     //   );
       
-      console.log('Payment request created:', response.data);
+      // console.log('Payment request created:', response.data);
       res.status(200).json({ message: 'Payment request created' });
     } catch (error) {
       console.error(error.message);
