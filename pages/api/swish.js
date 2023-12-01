@@ -1,89 +1,12 @@
 import fs from 'fs';
 import https from 'https';
 import axios from 'axios';
-const path = require('path');
 
 
 export default async function handler(req, res) {
   const { totalPrice, swishMobileNumber } = req.body
   try{
 
-
-// Specify the path to the folder you want to inspect
-const folderPath1 = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
-const folderPath2 = '/var/task';
-
-
-// const directoryPath = path.join(__dirname, './');
-// console.log(directoryPath)
-
-// // Read the contents of the folder
-fs.readdir(folderPath1, (err, files) => {
-  if (err) {
-    console.error('Error reading folder:', err);
-  } else {
-    console.log(`Contents of ${folderPath1}:`);
-    files.forEach((file, index) => {
-      console.log(`${index + 1}. ${file}`);
-    });
-  }
-});
-
-// // console.log(__dirname)
-
-// fs.readdir(folderPath2, (err, files) => {
-//   if (err) {
-//     console.error('Error reading folder:', err);
-//   } else {
-//     console.log(`Contents of ${folderPath2}:`);
-//     files.forEach((file, index) => {
-//       console.log(`${index + 1}. ${file}`);
-//     });
-//   }
-// });
-
-// fs.readdir(directoryPath, (err, files) => {
-//   if (err) {
-//     console.error('Error reading folder:', err);
-//   } else {
-//     console.log(`Contents of ${directoryPath}:`);
-//     files.forEach((file, index) => {
-//       console.log(`${index + 1}. ${file}`);
-//     });
-//   }
-// });
-
-// fs.readdir(folderPath1, (err, files) => {
-//   if (err) {
-//     console.error('Error reading folder:', err);
-//   } else {
-//     console.log(`Contents of ${folderPath1}:`);
-//     files.forEach((file, index) => {
-//       console.log(`${index + 1}. ${file}`);
-//     });
-//   }
-// });
-
-// fs.readdir(folderPath4, (err, files) => {
-//   if (err) {
-//     console.error('Error reading folder:', err);
-//   } else {
-//     console.log(`Contents of ${folderPath4}:`);
-//     files.forEach((file, index) => {
-//       console.log(`${index + 1}. ${file}`);
-//     });
-//   }
-// });
-
-
-    // const certificatePath = path.join(__dirname, '../../../../ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem')
-    // fs.readFile(certificatePath, 'utf8', (err, data) => {
-    //   if (err) {
-    //     console.error('Error reading certificate file:', err);
-    //   } else {
-    //     console.log('Certificate Content:', data);
-    //   }
-    // });
     function generateSwishUUID() {
         const hexChars = '0123456789ABCDEF';
         let uuid = '';
@@ -101,12 +24,11 @@ fs.readdir(folderPath1, (err, files) => {
         return uuid;
       }
 
-    //   const pathToSSL = path.join(__dirname,'../../../../ssl/Getswish_Test_Certificates')
       
       const agent = new https.Agent({
-                cert: fs.readFileSync(`/opt/render/project/src/ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.pem`, { encoding: 'utf8' }),
-                key: fs.readFileSync(`/opt/render/project/src/ssl/Getswish_Test_Certificates/Swish_Merchant_TestCertificate_1234679304.key`, { encoding: 'utf8' }),
-                ca: fs.readFileSync(`/opt/render/project/src/ssl/Getswish_Test_Certificates/Swish_TLS_RootCA.pem`, { encoding: 'utf8' }),
+                cert: fs.readFileSync(`/opt/render/project/src/ssl/Merchant_SmartBoost_1232406551_20230117/myCertificate.pem`, { encoding: 'utf8' }),
+                key: fs.readFileSync(`/opt/render/project/src/ssl/Merchant_SmartBoost_1232406551_20230117/myPrivateKey.key`, { encoding: 'utf8' }),
+                ca: fs.readFileSync(`/opt/render/project/src/ssl/Merchant_SmartBoost_1232406551_20230117/Swish_TLS_RootCA.pem`, { encoding: 'utf8' }),
                 passphrase: 'swish'            
         });
 
