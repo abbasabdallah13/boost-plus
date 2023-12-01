@@ -10,43 +10,45 @@ export default async function handler(req, res) {
 
 
 // Specify the path to the folder you want to inspect
-const folderPath1 = '/opt/render/project/src/.next/server';
-const folderPath2 = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
-const directoryPath = path.join(__dirname, './');
+// const folderPath1 = '/opt/render/project/src/.next/server';
+// const folderPath2 = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
+// const directoryPath = path.join(__dirname, './');
 // console.log(directoryPath)
 // // Read the contents of the folder
-fs.readdir(folderPath1, (err, files) => {
-  if (err) {
-    console.error('Error reading folder:', err);
-  } else {
-    console.log(`Contents of ${folderPath1}:`);
-    files.forEach((file, index) => {
-      console.log(`${index + 1}. ${file}`);
-    });
-  }
-});
+// fs.readdir(folderPath1, (err, files) => {
+//   if (err) {
+//     console.error('Error reading folder:', err);
+//   } else {
+//     console.log(`Contents of ${folderPath1}:`);
+//     files.forEach((file, index) => {
+//       console.log(`${index + 1}. ${file}`);
+//     });
+//   }
+// });
 
-fs.readdir(folderPath2, (err, files) => {
-  if (err) {
-    console.error('Error reading folder:', err);
-  } else {
-    console.log(`Contents of ${folderPath2}:`);
-    files.forEach((file, index) => {
-      console.log(`${index + 1}. ${file}`);
-    });
-  }
-});
+console.log(__dirname)
 
-fs.readdir(directoryPath, (err, files) => {
-  if (err) {
-    console.error('Error reading folder:', err);
-  } else {
-    console.log(`Contents of ${directoryPath}:`);
-    files.forEach((file, index) => {
-      console.log(`${index + 1}. ${file}`);
-    });
-  }
-});
+// fs.readdir(folderPath2, (err, files) => {
+//   if (err) {
+//     console.error('Error reading folder:', err);
+//   } else {
+//     console.log(`Contents of ${folderPath2}:`);
+//     files.forEach((file, index) => {
+//       console.log(`${index + 1}. ${file}`);
+//     });
+//   }
+// });
+
+// fs.readdir(directoryPath, (err, files) => {
+//   if (err) {
+//     console.error('Error reading folder:', err);
+//   } else {
+//     console.log(`Contents of ${directoryPath}:`);
+//     files.forEach((file, index) => {
+//       console.log(`${index + 1}. ${file}`);
+//     });
+//   }
+// });
 
 // fs.readdir(folderPath3, (err, files) => {
 //   if (err) {
