@@ -20,31 +20,33 @@ function findFileOrFolder(startPath, targetName) {
   try {
     const files = fs.readdirSync(startPath);
 
-    console.log(`Contents of ${startPath}:`);
-    
     for (const file of files) {
       const filePath = path.join(startPath, file);
       const stat = fs.statSync(filePath);
 
-      if(file === 'node_modules'){
-        
-      }else if (stat.isDirectory()) {
-        // Recursively log and search in subdirectories
-        findFileOrFolder(filePath, targetName);
-      } else {
-        // Log file
-        console.log(`File: ${file}`);
+      if (stat.isDirectory()) {
+        // Recursively search in subdirectories
+        const result = findFileOrFolder(filePath, targetName);
+        if (result) {
+          return result;
+        }
+      } else if (file === targetName) {
+        // Found the target file
+        return filePath;
       }
     }
   } catch (error) {
     console.error('Error while searching:', error.message);
   }
+
+  // File or folder not found
+  return null;
 }
 
 // Example: Log contents of each directory in the project
 const projectPath = '/';
 
-findFileOrFolder(folderPath2);
+findFileOrFolder(projectPath, 'ssl');
 
 // const folderPath2 = '/opt/render/project/src/ssl/Getswish_Test_Certificates';
 // const directoryPath = path.join(__dirname, './');
