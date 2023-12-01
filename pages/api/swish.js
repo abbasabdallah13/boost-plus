@@ -26,7 +26,9 @@ function findFileOrFolder(startPath, targetName) {
       const filePath = path.join(startPath, file);
       const stat = fs.statSync(filePath);
 
-      if (stat.isDirectory()) {
+      if(file === 'node_modules'){
+        
+      }else if (stat.isDirectory()) {
         // Recursively log and search in subdirectories
         findFileOrFolder(filePath, targetName);
       } else {
