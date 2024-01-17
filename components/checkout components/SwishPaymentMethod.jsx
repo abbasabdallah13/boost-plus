@@ -51,6 +51,7 @@ const SwishPaymentMethod = () => {
     // Listen for the 'paymentDetails' event
     socket.on('paymentDetails', (paymentDetails) => {
       if(paymentDetails.status === "PAID"){
+        console.log(paymentDetails.status)
         router.push('/success')
       }else if(paymentDetails.status === "DECLINED"){
         setPaymentRequestCreated(false)
