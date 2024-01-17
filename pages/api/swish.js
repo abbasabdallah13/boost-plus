@@ -6,6 +6,7 @@ import axios from 'axios';
 export default async function handler(req, res) {
   const { totalPrice, swishMobileNumber } = req.body
   try{
+    console.log('test')
     function generateSwishUUID() {
         const hexChars = '0123456789ABCDEF';
         let uuid = '';
