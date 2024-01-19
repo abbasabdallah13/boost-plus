@@ -9,7 +9,7 @@ import { SwishPaymentMethod, PickupPaymentMethod } from './index';
 import getStripe from "../../lib/getStripe";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import toast from 'react-hot-toast';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 
 
