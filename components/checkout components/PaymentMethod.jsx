@@ -96,7 +96,7 @@ function PaymentMethod({ paymentMethodModal }) {
                             <PayPalScriptProvider 
                                 options={
                                 {
-                                    'client-id': 'AXBH_ILMGyUh9ab05YY4-g0E1cTVvJUWIJ7uDlzR749gwhiQ7-mgy6Wo9HSoC5WZ_dNZMJ8SJYLdUjwQ',
+                                    'client-id': 'ARIxNR2-m5CvdyVQRsw0Eyff2Wc3wct48XJ8_3yvstKbOxqZMhtB-s5Jhd6IrVZXTDIYxHjHDTWpCDyh',
                                     currency:'SEK'
                                 }}>
                             <PayPalButtons 
