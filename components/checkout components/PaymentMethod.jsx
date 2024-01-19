@@ -9,6 +9,7 @@ import { SwishPaymentMethod, PickupPaymentMethod } from './index';
 import getStripe from "../../lib/getStripe";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import toast from 'react-hot-toast';
+import { Router, useRouter } from 'next/router';
 
 
 
@@ -36,10 +37,12 @@ const paymentMethods = [
   ]
 
 function PaymentMethod({ paymentMethodModal }) {
-
-      const handlePaymentMethod = (paymentMethod) => {
+    const router = useRouter()
+    const { cartItems, totalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
+    
+    const handlePaymentMethod = (paymentMethod) => {
         setPaymentMethod(paymentMethod);
-      }
+    }
 
       const handleCreditDebitPayments = async () => {
         const stripe = await getStripe();
@@ -60,7 +63,7 @@ function PaymentMethod({ paymentMethodModal }) {
         stripe.redirectToCheckout({sessionId: data.id});
       }
 
-  const { cartItems, totalPrice, fullName, setFullName, paymentMethod, setPaymentMethod } = useStateContext();
+
 
   return (
     <div>
