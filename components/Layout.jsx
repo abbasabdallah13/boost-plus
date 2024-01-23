@@ -9,7 +9,7 @@ const Layout = ({children}) => {
   return (
     <div>
     <Head>
-      <title>Smart Boost</title>
+      <title>Boost Plus</title>
     </Head>
     <header>
       {
