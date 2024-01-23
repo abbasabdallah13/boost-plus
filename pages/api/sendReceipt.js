@@ -14,10 +14,11 @@ export default async function handler(req,res){
             html: render(ReceiptTemplate({firstName, lastName, totalPrice, paymentMethod, cartItems, pickupDateAndTime}))
         })
         await sendEmail({
-            to: email,
+            to: "abbasab13@outlook.com",
             subject: 'New Order',
             html: render(AdminReceiptTemplate({firstName, lastName, totalPrice, paymentMethod, cartItems, pickupDateAndTime}))
         })
         res.send('Email sent')
+        console.log('Email sent')
     }
 }

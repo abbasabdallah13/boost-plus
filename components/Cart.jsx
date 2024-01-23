@@ -19,7 +19,7 @@ const Cart = ({ setCartModal }) => {
 
   return (
     <motion.div 
-      className="w-full flex flex-col md:w-1/2 lg:w-1/4 bg-white border-4 border-black z-50 absolute top-[-1.55rem] right-0 lg:right-0 lg:top-[-25px] lg:left-[unset] h-screen"
+      className="w-full flex flex-col md:w-1/2 lg:w-1/4 bg-white border-4 border-black z-[1000] absolute top-[-1.55rem] right-0 lg:right-0 lg:top-[-25px] lg:left-[unset] h-screen"
       initial={{opacity: 0,y:-120}}
       animate={{opacity: 1,y:25}}
       transition={{delay:0.1, type:'spring'  }}

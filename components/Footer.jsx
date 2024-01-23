@@ -12,7 +12,12 @@ const Footer = () => {
         <div className="p-4 text-xs flex flex-col gap-2 font-zen-kaku">
           <h1 className="font-zen-kaku font-semibold">Telephone: 0700333433</h1>
           <h1 className="font-zen-kaku font-semibold">Svarstid: mellan 13:00 och 15:00 alla dagar <br></br>Kontor: fröknegårdsvägen 18 Kristianstad</h1>
-          <h1 className="font-zen-kaku font-semibold">Support@smartboost.se</h1>
+          <a 
+            className="font-zen-kaku font-semibold"
+            href="mailto:support@boostplus.se"            
+          >
+            support@boostplus.se
+          </a>
         </div>
         <div className="hidden lg:block lg:mr-32">
           <ul>
@@ -25,7 +30,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-gray-300 text-black text-center px-4">
-        <p>All rights reserved - 2023</p>
+        <p>All rights reserved - 2024</p>
       </div>
   </div>
   )

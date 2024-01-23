@@ -31,7 +31,7 @@ const Navbar = () => {
                   <Image src={burgerMenu} alt='menu' className="w-12 h-12" />
               </div>
               {/* Clickabale logo image */}
-              <Link href={'/'}><Image src={logo} alt='logo'className="w-20 h-30" /></Link>
+              <Link href={'/'}><Image src={logo} alt='logo'className="w-36 h-20" /></Link>
               <div className="hidden lg:flex flex-col items-center gap-y-4">
                 {/* Navlinks on large screens */}
                 <ul className="hidden lg:block">
