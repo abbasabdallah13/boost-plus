@@ -17,7 +17,7 @@ const index = () => {
         s0.parentNode.insertBefore(s1,s0);
         window.Tawk_API = window.Tawk_API || {};
         window.Tawk_API.customStyle = {
-        zIndex : 990 
+        zIndex : 950 
         };
         })();
         `}

@@ -14,7 +14,7 @@ const success = () => {
         },
         {
             title:'email',
-            value: 'support@smartboost.se'
+            value: 'support@boostplus.se'
         },
         {
             title: 'Mobile',
@@ -72,7 +72,7 @@ const success = () => {
         s0.parentNode.insertBefore(s1,s0);
         window.Tawk_API = window.Tawk_API || {};
         window.Tawk_API.customStyle = {
-        zIndex : 49 
+        zIndex : 950 
         };
         })();
         `}
@@ -92,8 +92,8 @@ const success = () => {
                       {
                         el.title === "email" ? (
                         <div 
-                          className="capitalize bg-blue2 text-white rounded-md mt-2 flex flex-col justify-center w-3/4 max-w-[225px] py-2 cursor-pointer hover:border-2 hover:border-blue2 hover:bg-white hover:text-blue2 duration-300"
-                          onClick={() => window.location.href = "mailto:support@smartboost.se"}
+                          className="bg-blue2 text-white rounded-md mt-2 flex flex-col justify-center w-3/4 max-w-[225px] py-2 cursor-pointer hover:border-2 hover:border-blue2 hover:bg-white hover:text-blue2 duration-300"
+                          onClick={() => window.location.href = "mailto:support@boostplus.se"}
                         >
                             <h1 className="text-xl font-zen-kaku font-semibold">{el.title}</h1>
                             <p className="text-sm ml-2 font-heebo">{el.value}</p>

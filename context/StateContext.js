@@ -7,6 +7,9 @@ const Context = createContext();
 
 
 export const StateContext = ({ children }) => {
+
+    const [cartModal, setCartModal] = useState(false)
+
     const [cartItems, setCartItems] = useState(() => {
      const storedState = typeof localStorage !== 'undefined' ? localStorage.getItem("cartItems") : null
      return storedState ? JSON.parse(storedState) : []   
@@ -87,6 +90,8 @@ export const StateContext = ({ children }) => {
     return (
         <Context.Provider 
         value={{
+            cartModal,
+            setCartModal,
             setCartItems,
             cartItems,
             totalPrice,

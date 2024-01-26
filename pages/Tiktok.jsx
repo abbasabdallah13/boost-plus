@@ -73,7 +73,7 @@ const Tiktok = () => {
     
 
     return (
-    <div className="flex flex-col items-center mt-28 px-10 relative lg:h-fit lg:min-h-[70vh]">
+    <div className="flex flex-col items-center mt-36 lg:mt-32 px-10 relative lg:h-fit lg:min-h-[70vh]">
     <Script type="text/javascript" strategy="lazyOnload">{`
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
@@ -85,7 +85,7 @@ const Tiktok = () => {
         s0.parentNode.insertBefore(s1,s0);
         window.Tawk_API = window.Tawk_API || {};
         window.Tawk_API.customStyle = {
-        zIndex : 49 
+        zIndex : 950 
         };
         })();
         `}

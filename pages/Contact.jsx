@@ -22,7 +22,7 @@ const Contact = () => {
         {
             img: email,
             title: 'Email',
-            description: 'Support@smartboost.se',
+            description: 'support@boostplus.se',
             dimensions: 'h-20 w-20'
         },
         {
@@ -46,7 +46,7 @@ const Contact = () => {
                             {i === 1 ? (
                                 <a href="tel://0700333433" className="mt-4 bg-[#E52226] p-2 text-white rounded-lg cursor-pointer" >Call Now</a>
                             ): i === 2 ? (
-                                <a className="mt-4 bg-[#E52226] p-2 text-white rounded-lg cursor-pointer" onClick={() => window.location.href = "mailto:support@smartboost.se"}>Email Now</a>
+                                <a className="mt-4 bg-[#E52226] p-2 text-white rounded-lg cursor-pointer" onClick={() => window.location.href = "mailto:support@boostplus.se"}>Email Now</a>
                             ): i === 3 ? (
                                <a className="mt-8 bg-[#E52226] p-2 text-white rounded-lg cursor-pointer" href="javascript:void(Tawk_API.toggle())">Chat Now</a>
                             ) : ''}

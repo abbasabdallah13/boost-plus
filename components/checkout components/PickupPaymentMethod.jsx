@@ -1,59 +1,35 @@
 import React, { useState } from 'react'
-import dayjs, { Dayjs } from 'dayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { useEffect } from 'react';
-import success from '../../pages/success';
+import DatePicker from 'react-datepicker';
 import { useRouter } from 'next/router';
-import { useStateContext } from '../../context/StateContext';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 function Pickup() {
-    const router = useRouter();
-    const [dateValue, setDateValue] = useState(dayjs(getCurrentDateTime()))
+    const router = useRouter();     
+    const [startDate, setStartDate] = useState(new Date());
+    const [dateSet, setDateSet] = useState(false)
 
-    const { setPickupDateAndTime } = useStateContext()
-
-    useEffect(() => {
-      setPickupDateAndTime(dateValue.$d)
-    }, [dateValue])
-
-    function getCurrentDateTime() {
-        const now = new Date();
-      
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hours = '13'
-        const minutes = '00'
-      
-        const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
-      
-        return formattedDateTime;
-      }
-
-      const thirteen = dayjs().set('hour', 13).startOf('hour');
-      const fifteen = dayjs().set('hour', 15).startOf('hour');
-      
-     
-    
   return (
     <div className="m-4">
         <p className="font-zen-kaku font-semibold mb-2">Kindly choose a time between 13:00 and 15:00 for voucher pickup</p>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateTimePicker
-                label="Date and Time Picker"
-                value={dateValue}
-                onChange={(newValue) => setDateValue(newValue)}
-                disablePast 
-                minTime={thirteen}
-                maxTime={fifteen}
-                />
-        </LocalizationProvider>
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => {setStartDate(date); if(date.getHours()>= 13 && date.getHours()<=15) {setDateSet(true)} else{setDateSet(false)}}}
+          showTimeSelect
+          timeFormat="HH:mm"
+          minTime={new Date(0, 0, 0, 13, 0)}  // Set your minimum time (e.g., 8:00 AM)
+          maxTime={new Date(0, 0, 0, 15, 0)}
+          timeIntervals={15}
+          minDate={new Date()} 
+          timeCaption="time"
+          dateFormat="MMMM d, yyyy h:mm aa"
+          className='border-2 border-gray-400 rounded-md shadow-md px-2 text-sm cursor-pointer'
+        />
         <div className="flex justify-center mt-2">
             <button 
-                className="bg-red-600 text-white hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 duration-300 py-2 px-4 rounded-lg cursor-pointer"
+                className={`${!dateSet ? 'bg-gray-500' : 'bg-red-600 hover:bg-white hover:text-red-600 hover:border-2 hover:border-red-600 duration-300'} text-white  py-2 px-4 rounded-lg`}
                 onClick={()=> {router.push('/success')}}
+                disabled={!dateSet}
                 >
                 Confirm Pickup
             </button>

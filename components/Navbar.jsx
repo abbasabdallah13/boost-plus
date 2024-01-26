@@ -12,10 +12,9 @@ import Cart from "./Cart";
 import { SwishBanner } from "./home components";
 
 const Navbar = () => {
-  const { cartItems } = useStateContext();
+  const { cartItems, cartModal, setCartModal } = useStateContext();
   
   const [navbarModal, setNavbarModal] = useState(false);
-  const [cartModal, setCartModal] = useState(false);
   
   const links = ['Home','Instagram', 'Facebook', 'Tiktok','YouTube','Twitter', 'Contact'];
 
@@ -24,14 +23,14 @@ const Navbar = () => {
   }
 
   return (
-    <div className="w-full fixed top-0 z-[999] flex-col p-2 shadow-md bg-white">
+    <div className="w-full fixed top-0 z-[900] flex-col p-2 shadow-md bg-white">
       <div className="flex justify-between items-center">
               {/* burger menu on mobile devices */}
               <div className="flex items-center lg:hidden" onClick={()=> setNavbarModal(true)}>
                   <Image src={burgerMenu} alt='menu' className="w-12 h-12" />
               </div>
               {/* Clickabale logo image */}
-              <Link href={'/'}><Image src={logo} alt='logo'className="w-36 h-20" /></Link>
+              <Link className="relative right-2 md:right-0" href={'/'}><Image src={logo} alt='logo'className="w-36 h-20" /></Link>
               <div className="hidden lg:flex flex-col items-center gap-y-4">
                 {/* Navlinks on large screens */}
                 <ul className="hidden lg:block">
@@ -86,11 +85,6 @@ const Navbar = () => {
                     }
                   </ul>
                   </motion.div>
-                )
-              }
-              {
-                cartModal && (
-                  <Cart setCartModal={setCartModal} />
                 )
               }
       </div>
