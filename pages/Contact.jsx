@@ -34,7 +34,7 @@ const Contact = () => {
     ]
 
   return (
-    <div className="bg-[#272935] pb-16 mt-24 lg:h-fit lg:min-h-[70vh]">
+    <div className="bg-[#272935] pb-16 mt-32 min-[900px]:mt-24 lg:h-fit lg:min-h-[70vh]">
         <h1 className="relative top-4 text-white text-3xl ml-4">Contact:</h1>
         <div className="flex flex-col gap-4 items-center mt-8 md:flex-row md:flex-wrap md:justify-center md:items-center xl:gap-[5%] ">
             {  

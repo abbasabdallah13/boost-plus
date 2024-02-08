@@ -16,7 +16,7 @@ const Layout = ({children}) => {
     <Head>
       <title>Boost Plus</title>
     </Head>
-    <header className="relative border-2">
+    <header className="relative">
       {
         pathname === '/dashboard'|| pathname === '/dashboard/links/pending' || pathname === '/dashboard/links/done' || pathname === '/dashboard/Reviews' ? <DashboardNavbar /> : pathname === '/DashboardLogin' ? '' : <Navbar /> 
       }

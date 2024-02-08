@@ -29,9 +29,6 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="bg-gray-300 text-black text-center px-4">
-        <p>All rights reserved - 2024</p>
-      </div>
   </div>
   )
 };
