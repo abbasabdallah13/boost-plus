@@ -11,7 +11,7 @@ const Contact = () => {
             img: location,
             title: 'Our Main Office',
             description: `Svarstid: mellan 13:00 och 15:00 alla dagar Kontor: fröknegårdsvägen 18 Kristianstad`,
-            dimensions: 'h-20 w-20'
+            dimensions: 'h-[5.8rem] w-20'
         },
         {
             img: telephone,
