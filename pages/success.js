@@ -25,6 +25,7 @@ const success = () => {
     
 
     useEffect(() => {
+      console.log(pickupDateAndTime)
         const sendOrderToDb = () => {
             let newArr = cartItems.map(el => {
               return {
@@ -32,7 +33,7 @@ const success = () => {
                 fullName: `${userDetails.firstName} ${userDetails.lastName}`,
                 voucher: el.fromSelect.split(',')[0] + " " + el.voucherName,
                 paymentMethod: paymentMethod.toUpperCase(),
-                pickupTime: pickupDateAndTime ? pickupDateAndTime : 'n/a'  ,
+                pickupTime: pickupDateAndTime ? pickupDateAndTime.toString() : 'n/a'  ,
                 link: el.url,
                 purchaseDate: new Date().toString(),
                 status: 'pending'
@@ -44,7 +45,7 @@ const success = () => {
         const sendReceipt = async() => {
             await fetch('/api/sendReceipt', {
               method: "POST",
-              body: JSON.stringify({paymentMethod, totalPrice, userDetails, cartItems, pickupDateAndTime})
+              body: JSON.stringify({paymentMethod, totalPrice, userDetails, cartItems, pickupDateAndTime: pickupDateAndTime.toString()})
             })
           }
 

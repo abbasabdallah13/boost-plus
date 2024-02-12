@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker';
 import { useRouter } from 'next/router';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useStateContext } from '../../context/StateContext';
 
 
 function Pickup() {
     const router = useRouter();     
     const [startDate, setStartDate] = useState(new Date());
     const [dateSet, setDateSet] = useState(false)
+
+    const { setPickupDateAndTime } = useStateContext()
+
+    useEffect(() => {
+      setPickupDateAndTime(startDate)
+    }, [startDate])
+    
 
   return (
     <div className="m-4">
