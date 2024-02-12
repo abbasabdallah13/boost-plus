@@ -25,7 +25,6 @@ const success = () => {
     
 
     useEffect(() => {
-      console.log(pickupDateAndTime)
         const sendOrderToDb = () => {
             let newArr = cartItems.map(el => {
               return {
