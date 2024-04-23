@@ -4,6 +4,7 @@
 This project is a small e-commerce that hosts social media boosting services for a client based in Sweden. It is built using next.js and Sanity for database.
 
 ## Features
+- Products grid
 - Cart: Add items to card
 - Checkout: Add personal details and choose payment method to process order
 - Responsive design
