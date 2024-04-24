@@ -19,5 +19,4 @@ You can view a live demo of this project [here](https://boostplus.se).
 - socket.io
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
-
+This work © 2023 by Abbas Abdallah is licensed under CC BY-ND 4.0 
